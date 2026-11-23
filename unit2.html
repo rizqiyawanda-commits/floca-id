@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floca · Unit 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   FLOCA · Unit 2 · Go Green, Go Zero Waste!
+   Content lives in DATA (generated from the researcher's content file).
+   Audio: set AUDIO_BASE to the folder URL that holds the mp3 files.
+   ========================================================= */
+:root{
+  --sage:#3E7A5C; --sage-d:#2F6A4F; --mint:#E3F3E9; --mint-l:#F2F9F4; --mint-m:#A9D3BA;
+  --rose:#B04A6E; --blush:#FBE3EA; --blush-l:#FDF2F5;
+  --ink:#2B2A33; --muted:#66636E; --line:#E7E1E5; --paper:#FFFFFF; --soft:#FAF7F9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.55}
+.app{max-width:560px;margin:0 auto;padding:16px 16px 28px}
+h1,h2,.term,.brand{font-family:Poppins,Inter,Arial,sans-serif;font-weight:600}
+h1{font-size:22px;line-height:1.25} h2{font-size:18px;line-height:1.3}
+.muted{color:var(--muted)} .small{font-size:14px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--rose);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;min-height:40px}
+.brand{font-size:15px;color:var(--rose)} .brand span{color:var(--muted);font-family:Inter,Arial,sans-serif;font-weight:400;font-size:13px}
+.back{font-size:14px;font-weight:600;color:var(--sage-d);min-height:40px;padding:0 4px}
+.gloss{margin-top:8px;font-size:14px;font-weight:600;color:var(--rose);min-height:40px;padding:0 2px;text-decoration:underline;text-underline-offset:3px}
+.glosstext{background:var(--blush-l);border-radius:10px;padding:8px 12px;margin-top:4px;font-size:15px}
+.note{background:var(--soft);border:1px dashed var(--line);border-radius:12px;padding:8px 12px;font-size:13px;color:var(--muted);margin:10px 0}
+.unit-lab{font-size:14px;font-weight:600;color:var(--muted)}
+/* stepper */
+.steps{display:flex;gap:6px;margin:12px 0 16px;list-style:none}
+.steps li{flex:1;text-align:center;font-size:11.5px;color:var(--muted)}
+.steps li i{display:block;height:5px;border-radius:3px;background:var(--line);margin-bottom:5px}
+.steps li.done i{background:var(--mint-m)} .steps li.on{color:var(--sage-d);font-weight:700}.steps li.on i{background:var(--sage)}
+/* home menu */
+.menu{list-style:none;margin-top:14px}
+.item{display:flex;width:100%;text-align:left;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px;min-height:64px}
+.item .n{width:34px;height:34px;flex:none;border-radius:50%;background:var(--blush);color:var(--rose);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+.item.done .n{background:var(--sage);color:#fff}
+.item b{display:block;font-size:15.5px} .item small{color:var(--muted);font-size:13px}
+.item .st{margin-left:auto;font-size:12px;font-weight:700;color:var(--sage-d);white-space:nowrap}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:12px;font-weight:600;border:1.5px solid var(--sage);color:var(--sage-d);background:#fff}
+.btn.pri{background:var(--sage);color:#fff} .btn[disabled]{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;margin-top:16px}.row .btn{flex:1}
+/* highlight */
+.t{background:var(--blush);font-weight:600;padding:0 3px;border-radius:3px;box-shadow:inset 0 -2px 0 var(--rose)}
+button.t{font-weight:600;cursor:pointer;color:var(--ink)}
+/* text */
+.sit{font-style:italic;color:var(--muted);font-size:14px;margin-bottom:6px}
+.line{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)} .line:last-child{border-bottom:0}
+.who{font-weight:700;font-size:14px;color:var(--sage-d)}
+.play{width:40px;height:40px;flex:none;border-radius:50%;border:1.5px solid var(--sage);color:var(--sage);display:flex;align-items:center;justify-content:center}
+.play.on{background:var(--sage);color:#fff}
+.poster{border:2px solid var(--mint-m);background:var(--mint-l);border-radius:20px;padding:14px 14px 6px;margin:6px 0 16px}
+.poster .line{border-bottom:1px dashed #CFE6D8}
+.poster .line:first-child p{font-family:Poppins,Inter,Arial,sans-serif;font-size:18px;line-height:1.35}
+.sub{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:4px 0 2px}
+/* card */
+.seg{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);gap:10px} .seg b{color:var(--ink)}
+.bar{display:flex;gap:4px;margin:8px 0 12px}.bar i{flex:1;height:5px;border-radius:3px;background:var(--line)}.bar i.on{background:var(--sage)}
+.card{border:1.5px solid var(--line);border-radius:20px;padding:18px}
+.illu{height:140px;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.chip{display:inline-block;font-size:13px;font-weight:700;color:var(--sage-d);background:var(--mint);border-radius:999px;padding:4px 12px}
+.term{font-size:26px;line-height:1.2;margin:10px 0 12px;overflow-wrap:anywhere}
+.audio{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 6px;border-radius:999px;border:1.5px solid var(--sage);color:var(--sage-d);font-weight:600}
+.audio .c{width:32px;height:32px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center}
+.audio.on .c{background:var(--rose)}
+.lab{font-size:13px;color:var(--muted);font-weight:700;margin:14px 0 3px}
+.quote{border-left:3px solid var(--sage);padding:2px 0 2px 12px;font-size:15.5px}
+.dots{display:flex;gap:6px;justify-content:center;margin-top:12px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--sage);width:20px;border-radius:4px}
+/* practice */
+.prompt{background:var(--soft);border-radius:14px;padding:14px 16px;margin:4px 0 14px;font-size:15.5px}
+.ctx{font-size:14.5px;color:var(--muted);margin-bottom:6px}
+.gapline{font-size:15.5px}
+.kind{font-size:13px;font-weight:700;color:var(--rose);margin-bottom:6px}
+.opt{display:flex;width:100%;text-align:left;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:10px;font-size:15.5px;min-height:52px}
+.opt .k{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--muted);flex:none}
+.opt.ok{border-color:var(--sage);background:var(--mint)}.opt.ok .k{background:var(--sage);border-color:var(--sage);color:#fff}
+.opt.no{border-color:var(--ink);background:#F3F2F4}.opt.no .k{background:var(--ink);border-color:var(--ink);color:#fff}
+.fb{border-radius:14px;border:1.5px solid var(--sage);padding:12px 14px;margin-top:4px}
+.fb.no{border-color:var(--ink)}
+.fb .h{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--sage-d);margin-bottom:4px} .fb.no .h{color:var(--ink)}
+.fb p{font-size:15px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match .opt{margin:0 0 10px;min-height:56px;font-size:14.5px;padding:10px 12px}
+.match .opt.sel{border-color:var(--sage);box-shadow:0 0 0 2px var(--mint) inset}
+.match .opt.done{border-color:var(--sage);background:var(--mint);color:var(--sage-d)}
+.inp{width:100%;min-height:48px;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font:inherit}
+textarea.inp{min-height:110px;resize:vertical}
+.check{display:flex;gap:10px;align-items:flex-start;margin-top:8px;font-size:15px}
+.check input{width:20px;height:20px;flex:none;margin-top:3px;accent-color:var(--sage)}
+.model{background:var(--mint-l);border-radius:12px;padding:12px 14px;margin-top:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chips button{border:1.5px solid var(--rose);color:var(--rose);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600;min-height:40px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:380px){.match{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app" id="app" aria-live="polite"></div>
+<script>
+/* ===================== SETTINGS =====================
+   AUDIO_BASE: folder URL of the recorded mp3 files, ending with "/".
+   Default "audio/" = the audio folder next to this file (GitHub Pages).
+   If a file is missing, the device voice is used automatically.    */
+const AUDIO_BASE = "audio/";
+const DATA = {"unit": 2, "title": "Go Green, Go Zero Waste!", "situation": "The OSIS made a poster for the school campaign. Read the poster and the comments.", "kind": "poster", "lines": [{"code": "T01", "who": "Narrator", "text": "Go green, go [[zero waste|U2-10]]! Our Adiwiyata [[campaign|U2-16]] starts this Monday.", "audio": "FLC-AD-U2-T01.mp3", "part": "poster"}, {"code": "T02", "who": "Narrator", "text": "One. [[Reduce|U2-07]] [[single-use plastic|U2-02]]. Bring a tumbler and a lunch box.", "audio": "FLC-AD-U2-T02.mp3", "part": "poster"}, {"code": "T03", "who": "Narrator", "text": "Two. [[Reuse|U2-08]] paper and bottles. [[Recycle|U2-09]] cans and plastic.", "audio": "FLC-AD-U2-T03.mp3", "part": "poster"}, {"code": "T04", "who": "Narrator", "text": "Three. [[Separate|U2-05]] your [[waste|U2-01]]: organic, plastic, and paper. Put it in the right [[trash bin|U2-04]].", "audio": "FLC-AD-U2-T04.mp3", "part": "poster"}, {"code": "T05", "who": "Narrator", "text": "Four. Do not [[litter|U2-03]]. Turn food waste into [[compost|U2-06]] for our [[plants|U2-11]].", "audio": "FLC-AD-U2-T05.mp3", "part": "poster"}, {"code": "T06", "who": "Narrator", "text": "Five. [[Turn off|U2-14]] the lights and fans. [[Save energy|U2-13]], stop [[pollution|U2-15]]. Protect our [[environment|U2-12]]!", "audio": "FLC-AD-U2-T06.mp3", "part": "poster"}, {"code": "K01", "who": "Rina", "text": "I strongly agree with the [[slogan|U2-17]]. \"Go green, go zero waste\" is short and easy to remember.", "audio": "FLC-AD-U2-K01.mp3", "part": "comment"}, {"code": "K02", "who": "Andi", "text": "I see your point, but the [[layout|U2-18]] is too busy. Five rules are too many for one poster.", "audio": "FLC-AD-U2-K02.mp3", "part": "comment"}, {"code": "K03", "who": "Sari", "text": "That's true, but every rule is important. We should also [[plant|U2-11]] more trees.", "audio": "FLC-AD-U2-K03.mp3", "part": "comment"}, {"code": "K04", "who": "Dimas", "text": "I'm afraid I disagree with rule five. Our classrooms are hot, so we need the fans.", "audio": "FLC-AD-U2-K04.mp3", "part": "comment"}, {"code": "K05", "who": "Rina", "text": "I partly agree with Dimas. We need the fans, but we can [[turn|U2-14]] them [[off|U2-14]] during break time.", "audio": "FLC-AD-U2-K05.mp3", "part": "comment"}], "segments": [{"n": 1, "name": "Waste", "ids": ["U2-01", "U2-02", "U2-03", "U2-04", "U2-05", "U2-06"]}, {"n": 2, "name": "Reduce, reuse, recycle", "ids": ["U2-07", "U2-08", "U2-09", "U2-10", "U2-11", "U2-12"]}, {"n": 3, "name": "Saving energy and campaigns", "ids": ["U2-13", "U2-14", "U2-15", "U2-16", "U2-17", "U2-18"]}], "cards": {"U2-01": {"id_mean": "sampah; limbah", "id": "U2-01", "unit": 2, "seg": 1, "type": "word", "term": "waste", "label": "Theme word · noun", "group": "", "meaning": "Things we throw away because we do not need them.", "example": "Separate your waste: organic, plastic, and paper.", "note": "As a verb, \"waste\" means to use something badly, e.g. \"waste time\".", "img": "waste", "audio": "FLC-AD-U2-01.mp3", "say": "waste"}, "U2-02": {"id_mean": "plastik sekali pakai", "id": "U2-02", "unit": 2, "seg": 1, "type": "word", "term": "single-use plastic", "label": "Theme word · noun", "group": "", "meaning": "Plastic we use one time and then throw away.", "example": "Reduce single-use plastic.", "note": "", "img": "plastic", "audio": "FLC-AD-U2-02.mp3", "say": "single-use plastic"}, "U2-03": {"id_mean": "membuang sampah sembarangan", "id": "U2-03", "unit": 2, "seg": 1, "type": "word", "term": "litter", "label": "Theme word · verb", "group": "", "meaning": "To throw trash on the ground, not in a bin.", "example": "Do not litter.", "note": "As a noun, \"litter\" means trash on the ground.", "img": "litter", "audio": "FLC-AD-U2-03.mp3", "say": "litter"}, "U2-04": {"id_mean": "tempat sampah", "id": "U2-04", "unit": 2, "seg": 1, "type": "word", "term": "trash bin", "label": "Theme word · noun", "group": "", "meaning": "A box or can for trash.", "example": "Put it in the right trash bin.", "note": "", "img": "bin", "audio": "FLC-AD-U2-04.mp3", "say": "trash bin"}, "U2-05": {"id_mean": "memilah; memisahkan", "id": "U2-05", "unit": 2, "seg": 1, "type": "word", "term": "separate", "label": "Theme word · verb", "group": "", "meaning": "To put things into different groups.", "example": "Separate your waste: organic, plastic, and paper.", "note": "As an adjective, \"separate\" means \"not together\". Here it is a verb.", "img": "separate", "audio": "FLC-AD-U2-05.mp3", "say": "separate"}, "U2-06": {"id_mean": "kompos", "id": "U2-06", "unit": 2, "seg": 1, "type": "word", "term": "compost", "label": "Theme word · noun", "group": "", "meaning": "Natural fertilizer made from food and leaf waste.", "example": "Turn food waste into compost for our plants.", "note": "", "img": "compost", "audio": "FLC-AD-U2-06.mp3", "say": "compost"}, "U2-07": {"id_mean": "mengurangi", "id": "U2-07", "unit": 2, "seg": 2, "type": "word", "term": "reduce", "label": "Theme word · verb", "group": "", "meaning": "To make something less.", "example": "Reduce single-use plastic.", "note": "", "img": "", "audio": "FLC-AD-U2-07.mp3", "say": "reduce"}, "U2-08": {"id_mean": "menggunakan ulang", "id": "U2-08", "unit": 2, "seg": 2, "type": "word", "term": "reuse", "label": "Theme word · verb", "group": "", "meaning": "To use something again.", "example": "Reuse paper and bottles.", "note": "", "img": "", "audio": "FLC-AD-U2-08.mp3", "say": "reuse"}, "U2-09": {"id_mean": "mendaur ulang", "id": "U2-09", "unit": 2, "seg": 2, "type": "word", "term": "recycle", "label": "Theme word · verb", "group": "", "meaning": "To make old things into new things.", "example": "Recycle cans and plastic.", "note": "", "img": "recycle", "audio": "FLC-AD-U2-09.mp3", "say": "recycle"}, "U2-10": {"id_mean": "nol sampah", "id": "U2-10", "unit": 2, "seg": 2, "type": "word", "term": "zero waste", "label": "Theme word · noun", "group": "", "meaning": "Making almost no trash.", "example": "Go green, go zero waste!", "note": "", "img": "", "audio": "FLC-AD-U2-10.mp3", "say": "zero waste"}, "U2-11": {"id_mean": "menanam; tanaman", "id": "U2-11", "unit": 2, "seg": 2, "type": "word", "term": "plant", "label": "Theme word · verb / noun", "group": "", "meaning": "(verb) To put a seed or tree in the ground. (noun) A living green thing.", "example": "We should also plant more trees.", "note": "The verb and the noun look the same: \"plant a tree\", \"a green plant\".", "img": "plant", "audio": "FLC-AD-U2-11.mp3", "say": "plant"}, "U2-12": {"id_mean": "lingkungan", "id": "U2-12", "unit": 2, "seg": 2, "type": "word", "term": "environment", "label": "Theme word · noun", "group": "", "meaning": "The air, water, land, and living things around us.", "example": "Protect our environment!", "note": "", "img": "", "audio": "FLC-AD-U2-12.mp3", "say": "environment"}, "U2-13": {"id_mean": "menghemat energi", "id": "U2-13", "unit": 2, "seg": 3, "type": "word", "term": "save energy", "label": "Theme word · verb phrase", "group": "", "meaning": "To use less electricity.", "example": "Save energy, stop pollution.", "note": "\"Save\" here means \"use less\", not \"keep\".", "img": "", "audio": "FLC-AD-U2-13.mp3", "say": "save energy"}, "U2-14": {"id_mean": "mematikan", "id": "U2-14", "unit": 2, "seg": 3, "type": "word", "term": "turn off", "label": "Theme word · phrasal verb", "group": "", "meaning": "To stop a machine or light with a switch.", "example": "Turn off the lights and fans.", "note": "Opposite: turn on.", "img": "switch", "audio": "FLC-AD-U2-14.mp3", "say": "turn off"}, "U2-15": {"id_mean": "polusi; pencemaran", "id": "U2-15", "unit": 2, "seg": 3, "type": "word", "term": "pollution", "label": "Theme word · noun", "group": "", "meaning": "Dirty air, water, or land.", "example": "Save energy, stop pollution.", "note": "", "img": "pollution", "audio": "FLC-AD-U2-15.mp3", "say": "pollution"}, "U2-16": {"id_mean": "kampanye", "id": "U2-16", "unit": 2, "seg": 3, "type": "word", "term": "campaign", "label": "Theme word · noun", "group": "", "meaning": "Activities to ask many people to do something good.", "example": "Our Adiwiyata campaign starts this Monday.", "note": "", "img": "", "audio": "FLC-AD-U2-16.mp3", "say": "campaign"}, "U2-17": {"id_mean": "slogan; semboyan", "id": "U2-17", "unit": 2, "seg": 3, "type": "word", "term": "slogan", "label": "Theme word · noun", "group": "", "meaning": "A short sentence that is easy to remember.", "example": "I strongly agree with the slogan.", "note": "A slogan is often written big at the top of a poster.", "img": "", "audio": "FLC-AD-U2-17.mp3", "say": "slogan"}, "U2-18": {"id_mean": "tata letak", "id": "U2-18", "unit": 2, "seg": 3, "type": "word", "term": "layout", "label": "Theme word · noun", "group": "", "meaning": "The way words and pictures are arranged on a page.", "example": "I see your point, but the layout is too busy.", "note": "", "img": "", "audio": "FLC-AD-U2-18.mp3", "say": "layout"}, "U1-03": {"id_mean": "Saya sangat setuju dengan …", "id": "U1-03", "unit": 1, "seg": 1, "type": "expr", "term": "I strongly agree with …", "label": "Strong agreement", "group": "agree", "meaning": "You agree very much.", "example": "I strongly agree with it.", "note": "Stronger than \"I agree\". People usually add a reason.", "img": "", "audio": "FLC-AD-U1-03.mp3", "say": "I strongly agree with that."}, "U1-13": {"id_mean": "Saya mengerti maksudmu, tetapi …", "id": "U1-13", "unit": 1, "seg": 3, "type": "expr", "term": "I see your point, but …", "label": "Polite disagreement", "group": "dis", "meaning": "You understand the idea, but you think differently.", "example": "I see your point, but a small fine can help people remember.", "note": "\"See\" here means \"understand\", not \"look\".", "img": "", "audio": "FLC-AD-U1-13.mp3", "say": "I see your point, but..."}, "U1-12": {"id_mean": "Itu benar, tetapi …", "id": "U1-12", "unit": 1, "seg": 3, "type": "expr", "term": "That's true, but …", "label": "Partial agreement", "group": "partial", "meaning": "You accept the idea, then add a different idea.", "example": "That's true, but we can put a reminder in the class group on Thursday.", "note": "", "img": "", "audio": "FLC-AD-U1-12.mp3", "say": "That's true, but..."}, "U1-10": {"id_mean": "Saya setuju sebagian / tidak setuju sebagian dengan …", "id": "U1-10", "unit": 1, "seg": 3, "type": "expr", "term": "I partly agree / partly disagree with …", "label": "Partial agreement", "group": "partial", "meaning": "You agree with some parts, but not all.", "example": "I partly agree with Dimas. A reward is good, but we also need clear rules.", "note": "\"Partly\" means \"in some parts\". People often add \"but\".", "img": "", "audio": "FLC-AD-U1-10.mp3", "say": "I partly agree with that. I partly disagree with that."}}, "questions": {"1": [{"id": "U2-01-lis", "type": "choice", "kind": "Listen and choose", "card": "U2-01", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "waste", "audio": "FLC-AD-U2-01.mp3"}, "options": ["waste", "single-use plastic", "litter"], "answer": "waste", "hint": "Listen again and look at the first word of each option.", "why": "waste: Things we throw away because we do not need them. As a verb, \"waste\" means to use something badly, e.g. \"waste time\"."}, {"id": "U2-03-lis", "type": "choice", "kind": "Listen and choose", "card": "U2-03", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "litter", "audio": "FLC-AD-U2-03.mp3"}, "options": ["litter", "separate", "trash bin"], "answer": "litter", "hint": "Listen again and look at the first word of each option.", "why": "litter: To throw trash on the ground, not in a bin. As a noun, \"litter\" means trash on the ground."}, {"id": "U2-S1-match0", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["waste", "Things we throw away because we do not need them."], ["single-use plastic", "Plastic we use one time and then throw away."], ["litter", "To throw trash on the ground, not in a bin."]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U2-S1-match1", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["trash bin", "A box or can for trash."], ["separate", "To put things into different groups."], ["compost", "Natural fertilizer made from food and leaf waste."]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U2-01-gap", "type": "choice", "kind": "Complete the text", "card": "U2-01", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Three. Separate your _____: organic, plastic, and paper. Put it in the right trash bin."}, "options": ["waste", "pollution", "environment"], "answer": "waste", "hint": "Think about the meaning: Things we throw away because we do not need them.", "why": "\"waste\" fits here. Meaning: Things we throw away because we do not need them."}, {"id": "U2-02-gap", "type": "choice", "kind": "Complete the text", "card": "U2-02", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "One. Reduce _____. Bring a tumbler and a lunch box."}, "options": ["single-use plastic", "compost", "plants"], "answer": "single-use plastic", "hint": "Think about the meaning: Plastic we use one time and then throw away.", "why": "\"single-use plastic\" fits here. Meaning: Plastic we use one time and then throw away."}, {"id": "U2-03-gap", "type": "choice", "kind": "Complete the text", "card": "U2-03", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Four. Do not _____. Turn food waste into compost for our plants."}, "options": ["litter", "recycle", "plant"], "answer": "litter", "hint": "Think about the meaning: To throw trash on the ground, not in a bin.", "why": "\"litter\" fits here. Meaning: To throw trash on the ground, not in a bin."}, {"id": "U2-04-gap", "type": "choice", "kind": "Complete the text", "card": "U2-04", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Three. Separate your waste: organic, plastic, and paper. Put it in the right _____."}, "options": ["trash bin", "compost", "slogan"], "answer": "trash bin", "hint": "Think about the meaning: A box or can for trash.", "why": "\"trash bin\" fits here. Meaning: A box or can for trash."}, {"id": "U2-05-gap", "type": "choice", "kind": "Complete the text", "card": "U2-05", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Three. _____ your waste: organic, plastic, and paper. Put it in the right trash bin."}, "options": ["Separate", "Turn off", "Plant"], "answer": "Separate", "hint": "Think about the meaning: To put things into different groups.", "why": "\"Separate\" fits here. Meaning: To put things into different groups."}, {"id": "U2-06-gap", "type": "choice", "kind": "Complete the text", "card": "U2-06", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Four. Do not litter. Turn food waste into _____ for our plants."}, "options": ["compost", "pollution", "litter"], "answer": "compost", "hint": "Think about the meaning: Natural fertilizer made from food and leaf waste.", "why": "\"compost\" fits here. Meaning: Natural fertilizer made from food and leaf waste."}, {"id": "U2-03-spell", "type": "input", "kind": "Listen and type", "card": "U2-03", "prompt": "Press Listen. Then type the word. It starts with <b>l<\/b> and has 6 letters.", "listen": {"text": "litter", "audio": "FLC-AD-U2-03.mp3"}, "accept": ["litter"], "hint": "Check your spelling. Meaning: To throw trash on the ground, not in a bin.", "why": "litter: To throw trash on the ground, not in a bin. As a noun, \"litter\" means trash on the ground."}, {"id": "U2-06-spell", "type": "input", "kind": "Listen and type", "card": "U2-06", "prompt": "Press Listen. Then type the word. It starts with <b>c<\/b> and has 7 letters.", "listen": {"text": "compost", "audio": "FLC-AD-U2-06.mp3"}, "accept": ["compost"], "hint": "Check your spelling. Meaning: Natural fertilizer made from food and leaf waste.", "why": "compost: Natural fertilizer made from food and leaf waste."}], "2": [{"id": "U2-07-lis", "type": "choice", "kind": "Listen and choose", "card": "U2-07", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "reduce", "audio": "FLC-AD-U2-07.mp3"}, "options": ["reduce", "zero waste", "environment"], "answer": "reduce", "hint": "Listen again and look at the first word of each option.", "why": "reduce: To make something less."}, {"id": "U2-09-lis", "type": "choice", "kind": "Listen and choose", "card": "U2-09", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "recycle", "audio": "FLC-AD-U2-09.mp3"}, "options": ["recycle", "zero waste", "plant"], "answer": "recycle", "hint": "Listen again and look at the first word of each option.", "why": "recycle: To make old things into new things."}, {"id": "U2-S2-match0", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["reduce", "To make something less."], ["reuse", "To use something again."], ["recycle", "To make old things into new things."]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U2-S2-match1", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["zero waste", "Making almost no trash."], ["plant", "(verb) To put a seed or tree in the ground. (noun) A living green thing."], ["environment", "The air, water, land, and living things around us."]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U2-07-gap", "type": "choice", "kind": "Complete the text", "card": "U2-07", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "One. _____ single-use plastic. Bring a tumbler and a lunch box."}, "options": ["Reduce", "Plant", "Turn off"], "answer": "Reduce", "hint": "Think about the meaning: To make something less.", "why": "\"Reduce\" fits here. Meaning: To make something less."}, {"id": "U2-08-gap", "type": "choice", "kind": "Complete the text", "card": "U2-08", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Two. _____ paper and bottles. Recycle cans and plastic."}, "options": ["Reuse", "Litter", "Turn off"], "answer": "Reuse", "hint": "Think about the meaning: To use something again.", "why": "\"Reuse\" fits here. Meaning: To use something again."}, {"id": "U2-09-gap", "type": "choice", "kind": "Complete the text", "card": "U2-09", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Two. Reuse paper and bottles. _____ cans and plastic."}, "options": ["Recycle", "Litter", "Plant"], "answer": "Recycle", "hint": "Think about the meaning: To make old things into new things.", "why": "\"Recycle\" fits here. Meaning: To make old things into new things."}, {"id": "U2-10-gap", "type": "choice", "kind": "Complete the text", "card": "U2-10", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Go green, go _____! Our Adiwiyata campaign starts this Monday."}, "options": ["zero waste", "pollution", "litter"], "answer": "zero waste", "hint": "Think about the meaning: Making almost no trash.", "why": "\"zero waste\" fits here. Meaning: Making almost no trash."}, {"id": "U2-11-gap", "type": "choice", "kind": "Complete the text", "card": "U2-11", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Andi", "text": "I see your point, but the layout is too busy. Five rules are too many for one poster."}, "line": {"who": "Sari", "text": "That's true, but every rule is important. We should also _____ more trees."}, "options": ["plant", "litter", "separate"], "answer": "plant", "hint": "Think about the meaning: (verb) To put a seed or tree in the ground. (noun) A living green thing.", "why": "\"plant\" fits here. Meaning: (verb) To put a seed or tree in the ground. (noun) A living green thing."}, {"id": "U2-12-gap", "type": "choice", "kind": "Complete the text", "card": "U2-12", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Five. Turn off the lights and fans. Save energy, stop pollution. Protect our _____!"}, "options": ["environment", "pollution", "waste"], "answer": "environment", "hint": "Think about the meaning: The air, water, land, and living things around us.", "why": "\"environment\" fits here. Meaning: The air, water, land, and living things around us."}, {"id": "U2-08-spell", "type": "input", "kind": "Listen and type", "card": "U2-08", "prompt": "Press Listen. Then type the word. It starts with <b>r<\/b> and has 5 letters.", "listen": {"text": "reuse", "audio": "FLC-AD-U2-08.mp3"}, "accept": ["reuse"], "hint": "Check your spelling. Meaning: To use something again.", "why": "reuse: To use something again."}, {"id": "U2-12-spell", "type": "input", "kind": "Listen and type", "card": "U2-12", "prompt": "Press Listen. Then type the word. It starts with <b>e<\/b> and has 11 letters.", "listen": {"text": "environment", "audio": "FLC-AD-U2-12.mp3"}, "accept": ["environment"], "hint": "Check your spelling. Meaning: The air, water, land, and living things around us.", "why": "environment: The air, water, land, and living things around us."}], "3": [{"id": "U2-13-lis", "type": "choice", "kind": "Listen and choose", "card": "U2-13", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "save energy", "audio": "FLC-AD-U2-13.mp3"}, "options": ["save energy", "turn off", "slogan"], "answer": "save energy", "hint": "Listen again and look at the first word of each option.", "why": "save energy: To use less electricity. \"Save\" here means \"use less\", not \"keep\"."}, {"id": "U2-15-lis", "type": "choice", "kind": "Listen and choose", "card": "U2-15", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "pollution", "audio": "FLC-AD-U2-15.mp3"}, "options": ["pollution", "turn off", "layout"], "answer": "pollution", "hint": "Listen again and look at the first word of each option.", "why": "pollution: Dirty air, water, or land."}, {"id": "U2-S3-match0", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["save energy", "To use less electricity."], ["turn off", "To stop a machine or light with a switch."], ["pollution", "Dirty air, water, or land."]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U2-S3-match1", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["campaign", "Activities to ask many people to do something good."], ["slogan", "A short sentence that is easy to remember."], ["layout", "The way words and pictures are arranged on a page."]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U2-13-gap", "type": "choice", "kind": "Complete the text", "card": "U2-13", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Five. Turn off the lights and fans. _____, stop pollution. Protect our environment!"}, "options": ["Save energy", "Reuse bottles", "Separate waste"], "answer": "Save energy", "hint": "Think about the meaning: To use less electricity.", "why": "\"Save energy\" fits here. Meaning: To use less electricity."}, {"id": "U2-14-gap", "type": "choice", "kind": "Complete the text", "card": "U2-14", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Five. _____ the lights and fans. Save energy, stop pollution. Protect our environment!"}, "options": ["Turn off", "Recycle", "Separate"], "answer": "Turn off", "hint": "Think about the meaning: To stop a machine or light with a switch.", "why": "\"Turn off\" fits here. Meaning: To stop a machine or light with a switch."}, {"id": "U2-15-gap", "type": "choice", "kind": "Complete the text", "card": "U2-15", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Five. Turn off the lights and fans. Save energy, stop _____. Protect our environment!"}, "options": ["pollution", "compost", "the environment"], "answer": "pollution", "hint": "Think about the meaning: Dirty air, water, or land.", "why": "\"pollution\" fits here. Meaning: Dirty air, water, or land."}, {"id": "U2-16-gap", "type": "choice", "kind": "Complete the text", "card": "U2-16", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Poster", "text": "Go green, go zero waste! Our Adiwiyata _____ starts this Monday."}, "options": ["campaign", "trash bin", "layout"], "answer": "campaign", "hint": "Think about the meaning: Activities to ask many people to do something good.", "why": "\"campaign\" fits here. Meaning: Activities to ask many people to do something good."}, {"id": "U2-17-gap", "type": "choice", "kind": "Complete the text", "card": "U2-17", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Rina", "text": "I strongly agree with the _____. \"Go green, go zero waste\" is short and easy to remember."}, "options": ["slogan", "layout", "compost"], "answer": "slogan", "hint": "Think about the meaning: A short sentence that is easy to remember.", "why": "\"slogan\" fits here. Meaning: A short sentence that is easy to remember."}, {"id": "U2-18-gap", "type": "choice", "kind": "Complete the text", "card": "U2-18", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Rina", "text": "I strongly agree with the slogan. \"Go green, go zero waste\" is short and easy to remember."}, "line": {"who": "Andi", "text": "I see your point, but the _____ is too busy. Five rules are too many for one poster."}, "options": ["layout", "slogan", "environment"], "answer": "layout", "hint": "Think about the meaning: The way words and pictures are arranged on a page.", "why": "\"layout\" fits here. Meaning: The way words and pictures are arranged on a page."}, {"id": "U2-16-spell", "type": "input", "kind": "Listen and type", "card": "U2-16", "prompt": "Press Listen. Then type the word. It starts with <b>c<\/b> and has 8 letters.", "listen": {"text": "campaign", "audio": "FLC-AD-U2-16.mp3"}, "accept": ["campaign"], "hint": "Check your spelling. Meaning: Activities to ask many people to do something good.", "why": "campaign: Activities to ask many people to do something good."}, {"id": "U2-18-spell", "type": "input", "kind": "Listen and type", "card": "U2-18", "prompt": "Press Listen. Then type the word. It starts with <b>l<\/b> and has 6 letters.", "listen": {"text": "layout", "audio": "FLC-AD-U2-18.mp3"}, "accept": ["layout"], "hint": "Check your spelling. Meaning: The way words and pictures are arranged on a page.", "why": "layout: The way words and pictures are arranged on a page."}]}, "review": [{"id": "U2-01-rev", "type": "choice", "kind": "Remember it", "card": "U2-01", "prompt": "Which one means: <em>Things we throw away because we do not need them.<\/em>", "options": ["waste", "litter", "recycle"], "answer": "waste", "hint": "Try to remember the text. ", "why": "waste: Things we throw away because we do not need them. As a verb, \"waste\" means to use something badly, e.g. \"waste time\"."}, {"id": "U2-02-rev", "type": "choice", "kind": "Remember it", "card": "U2-02", "prompt": "Which one means: <em>Plastic we use one time and then throw away.<\/em>", "options": ["single-use plastic", "environment", "campaign"], "answer": "single-use plastic", "hint": "Try to remember the text. ", "why": "single-use plastic: Plastic we use one time and then throw away."}, {"id": "U2-03-rev", "type": "choice", "kind": "Remember it", "card": "U2-03", "prompt": "Which one means: <em>To throw trash on the ground, not in a bin.<\/em>", "options": ["litter", "save energy", "reduce"], "answer": "litter", "hint": "Try to remember the text. ", "why": "litter: To throw trash on the ground, not in a bin. As a noun, \"litter\" means trash on the ground."}, {"id": "U2-04-rev", "type": "choice", "kind": "Remember it", "card": "U2-04", "prompt": "Which one means: <em>A box or can for trash.<\/em>", "options": ["trash bin", "litter", "waste"], "answer": "trash bin", "hint": "Try to remember the text. ", "why": "trash bin: A box or can for trash."}, {"id": "U2-05-rev", "type": "choice", "kind": "Remember it", "card": "U2-05", "prompt": "Which one means: <em>To put things into different groups.<\/em>", "options": ["separate", "zero waste", "recycle"], "answer": "separate", "hint": "Try to remember the text. ", "why": "separate: To put things into different groups. As an adjective, \"separate\" means \"not together\". Here it is a verb."}, {"id": "U2-06-rev", "type": "choice", "kind": "Remember it", "card": "U2-06", "prompt": "Which one means: <em>Natural fertilizer made from food and leaf waste.<\/em>", "options": ["compost", "waste", "environment"], "answer": "compost", "hint": "Try to remember the text. ", "why": "compost: Natural fertilizer made from food and leaf waste."}, {"id": "U2-07-rev", "type": "choice", "kind": "Remember it", "card": "U2-07", "prompt": "Which one means: <em>To make something less.<\/em>", "options": ["reduce", "separate", "litter"], "answer": "reduce", "hint": "Try to remember the text. ", "why": "reduce: To make something less."}, {"id": "U2-08-rev", "type": "choice", "kind": "Remember it", "card": "U2-08", "prompt": "Which one means: <em>To use something again.<\/em>", "options": ["reuse", "recycle", "zero waste"], "answer": "reuse", "hint": "Try to remember the text. ", "why": "reuse: To use something again."}, {"id": "U2-09-rev", "type": "choice", "kind": "Remember it", "card": "U2-09", "prompt": "Which one means: <em>To make old things into new things.<\/em>", "options": ["recycle", "litter", "pollution"], "answer": "recycle", "hint": "Try to remember the text. ", "why": "recycle: To make old things into new things."}, {"id": "U2-10-rev", "type": "choice", "kind": "Remember it", "card": "U2-10", "prompt": "Which one means: <em>Making almost no trash.<\/em>", "options": ["zero waste", "recycle", "compost"], "answer": "zero waste", "hint": "Try to remember the text. ", "why": "zero waste: Making almost no trash."}, {"id": "U2-11-rev", "type": "choice", "kind": "Remember it", "card": "U2-11", "prompt": "Which one means: <em>(verb) To put a seed or tree in the ground. (noun) A living green thing.<\/em>", "options": ["plant", "compost", "save energy"], "answer": "plant", "hint": "Try to remember the text. ", "why": "plant: (verb) To put a seed or tree in the ground. (noun) A living green thing. The verb and the noun look the same: \"plant a tree\", \"a green plant\"."}, {"id": "U2-12-rev", "type": "choice", "kind": "Remember it", "card": "U2-12", "prompt": "Which one means: <em>The air, water, land, and living things around us.<\/em>", "options": ["environment", "litter", "reduce"], "answer": "environment", "hint": "Try to remember the text. ", "why": "environment: The air, water, land, and living things around us."}, {"id": "U2-13-rev", "type": "choice", "kind": "Remember it", "card": "U2-13", "prompt": "Which one means: <em>To use less electricity.<\/em>", "options": ["save energy", "reduce", "zero waste"], "answer": "save energy", "hint": "Try to remember the text. ", "why": "save energy: To use less electricity. \"Save\" here means \"use less\", not \"keep\"."}, {"id": "U2-14-rev", "type": "choice", "kind": "Remember it", "card": "U2-14", "prompt": "Which one means: <em>To stop a machine or light with a switch.<\/em>", "options": ["turn off", "save energy", "environment"], "answer": "turn off", "hint": "Try to remember the text. ", "why": "turn off: To stop a machine or light with a switch. Opposite: turn on."}, {"id": "U2-15-rev", "type": "choice", "kind": "Remember it", "card": "U2-15", "prompt": "Which one means: <em>Dirty air, water, or land.<\/em>", "options": ["pollution", "turn off", "plant"], "answer": "pollution", "hint": "Try to remember the text. ", "why": "pollution: Dirty air, water, or land."}, {"id": "U2-16-rev", "type": "choice", "kind": "Remember it", "card": "U2-16", "prompt": "Which one means: <em>Activities to ask many people to do something good.<\/em>", "options": ["campaign", "compost", "turn off"], "answer": "campaign", "hint": "Try to remember the text. ", "why": "campaign: Activities to ask many people to do something good."}, {"id": "U2-17-rev", "type": "choice", "kind": "Remember it", "card": "U2-17", "prompt": "Which one means: <em>A short sentence that is easy to remember.<\/em>", "options": ["slogan", "campaign", "reuse"], "answer": "slogan", "hint": "Try to remember the text. ", "why": "slogan: A short sentence that is easy to remember. A slogan is often written big at the top of a poster."}, {"id": "U2-18-rev", "type": "choice", "kind": "Remember it", "card": "U2-18", "prompt": "Which one means: <em>The way words and pictures are arranged on a page.<\/em>", "options": ["layout", "single-use plastic", "trash bin"], "answer": "layout", "hint": "Try to remember the text. ", "why": "layout: The way words and pictures are arranged on a page."}, {"id": "U1-03-rev", "type": "choice", "kind": "From earlier units", "card": "U1-03", "prompt": "Which one means: <em>You agree very much.<\/em>", "options": ["I strongly agree with …", "That's true, but …", "I partly agree / partly disagree with …"], "answer": "I strongly agree with …", "hint": "Try to remember the text. It is in Unit 1.", "why": "I strongly agree with …: You agree very much. Stronger than \"I agree\". People usually add a reason."}, {"id": "U1-13-rev", "type": "choice", "kind": "From earlier units", "card": "U1-13", "prompt": "Which one means: <em>You understand the idea, but you think differently.<\/em>", "options": ["I see your point, but …", "That's true, but …", "I partly agree / partly disagree with …"], "answer": "I see your point, but …", "hint": "Try to remember the text. It is in Unit 1.", "why": "I see your point, but …: You understand the idea, but you think differently. \"See\" here means \"understand\", not \"look\"."}, {"id": "U1-12-rev", "type": "choice", "kind": "From earlier units", "card": "U1-12", "prompt": "Which one means: <em>You accept the idea, then add a different idea.<\/em>", "options": ["That's true, but …", "I strongly agree with …", "I see your point, but …"], "answer": "That's true, but …", "hint": "Try to remember the text. It is in Unit 1.", "why": "That's true, but …: You accept the idea, then add a different idea."}, {"id": "U1-10-rev", "type": "choice", "kind": "From earlier units", "card": "U1-10", "prompt": "Which one means: <em>You agree with some parts, but not all.<\/em>", "options": ["I partly agree / partly disagree with …", "I see your point, but …", "I strongly agree with …"], "answer": "I partly agree / partly disagree with …", "hint": "Try to remember the text. It is in Unit 1.", "why": "I partly agree / partly disagree with …: You agree with some parts, but not all. \"Partly\" means \"in some parts\". People often add \"but\"."}], "produce": {"prompt": "Look at the poster again. Choose one rule. Write two sentences: say if you agree or disagree, and use two theme words from this unit.", "model": "I strongly agree with rule four. We should not litter, and we can turn food waste into compost.", "check": ["I used an expression to agree or disagree.", "I used two theme words from this unit.", "My sentences talk about one rule on the poster."]}};
+
+/* ===================== ILLUSTRATIONS (one line style) ===================== */
+const G='#3E7A5C', M='#A9D3BA', P='#E7A3BB';
+const sv=b=>`<svg width="112" height="112" viewBox="0 0 120 120" aria-hidden="true" fill="none" stroke="${G}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">${b}</svg>`;
+const ILLU={
+ bin:sv(`<path d="M34 38h52l-5 60a6 6 0 0 1-6 5.5H45a6 6 0 0 1-6-5.5z" fill="#fff"/><path d="M28 38h64M48 38v-7a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v7"/><path d="M50 52v38M60 52v38M70 52v38" stroke="${M}"/>`),
+ plastic:sv(`<path d="M38 40h44l-6 62a5 5 0 0 1-5 4.5H49a5 5 0 0 1-5-4.5z" fill="#fff"/><rect x="34" y="31" width="52" height="10" rx="4" fill="#fff"/><path d="M66 31 74 10h10"/><path d="M47 62h26" stroke="${M}"/>`),
+ waste:sv(`<path d="M44 44c-12 10-16 26-12 40 4 14 14 22 28 22s24-8 28-22c4-14 0-30-12-40z" fill="#fff"/><path d="M48 44h24l4-10c-6 3-10 3-16-2-6 5-10 5-16 2z" fill="#fff"/><path d="M50 70h20M47 84h26" stroke="${M}"/>`),
+ litter:sv(`<path d="M14 100h92"/><path d="M28 24c10 4 22 18 30 40" stroke="${M}" stroke-dasharray="2 8"/><path d="M58 70l12-4 6 8-8 10-12-2z" fill="#fff"/><rect x="78" y="84" width="22" height="14" rx="3" fill="#fff"/><path d="M84 84v-4h10v4"/><path d="M22 96l6-8 8 2-2 8z" fill="#fff"/>`),
+ separate:sv(`<path d="M14 46h28l-3 50H17z" fill="#fff"/><path d="M46 46h28l-3 50H49z" fill="#fff"/><path d="M78 46h28l-3 50H81z" fill="#fff"/><path d="M12 46h32M44 46h32M76 46h32"/><circle cx="28" cy="70" r="7" stroke="${M}"/><path d="M56 64h8v14h-8z" stroke="${P}"/><path d="M88 64h12M88 71h12M88 78h8" stroke="${G}" stroke-width="2.5"/>`),
+ compost:sv(`<path d="M16 96c8-22 24-32 44-32s36 10 44 32z" fill="#fff"/><path d="M14 96h92"/><path d="M60 64V40"/><path d="M60 48c-14 0-20-8-20-18 12 0 20 6 20 18zM60 44c12 0 18-8 18-16-10 0-18 6-18 16z" fill="${M}"/><path d="M40 84h6M58 80h8M76 86h6" stroke="${M}"/>`),
+ recycle:sv(`<path d="M60 20a40 40 0 0 1 34 19"/><path d="M96 26l-2 14-14-3"/><path d="M98 66a40 40 0 0 1-38 34"/><path d="M68 106l-10-6 8-11"/><path d="M24 78A40 40 0 0 1 30 34"/><path d="M18 42l12-8 6 12"/><circle cx="60" cy="60" r="14" stroke="${M}"/>`),
+ plant:sv(`<path d="M38 72h44l-6 34H44z" fill="#fff"/><path d="M34 72h52"/><path d="M60 72V40"/><path d="M60 52c-16 0-24-10-24-22 14 0 24 8 24 22z" fill="${M}"/><path d="M60 46c14 0 22-10 22-20-12 0-22 8-22 20z" fill="${M}"/>`),
+ switch:sv(`<rect x="34" y="14" width="52" height="92" rx="10" fill="#fff"/><rect x="48" y="34" width="24" height="52" rx="6"/><rect x="51" y="58" width="18" height="25" rx="4" fill="${M}"/><text x="60" y="27" font-size="10" font-family="Inter,Arial" font-weight="700" fill="${G}" stroke="none" text-anchor="middle">ON</text><text x="60" y="100" font-size="10" font-family="Inter,Arial" font-weight="700" fill="${G}" stroke="none" text-anchor="middle">OFF</text>`),
+ pollution:sv(`<path d="M14 104h92"/><path d="M20 104V64l20 12V64l20 12V64l20 12V40h14v64" fill="#fff"/><path d="M84 40V26M92 40V26"/><path d="M80 22c-4-8 4-14 10-10 2-8 14-8 16 0 8 0 8 10 2 12" stroke="${P}"/><path d="M30 88h8M50 88h8M70 88h8" stroke="${M}"/>`)
+};
+const ICON={
+ spk:`<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/><path d="M15 9a4 4 0 0 1 0 6M17.5 6.5a7.5 7.5 0 0 1 0 11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>`,
+ ok:`<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#3E7A5C"/><path d="m7 12.5 3.2 3.2L17 9" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+ no:`<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#2B2A33"/><path d="M8.5 8.5l7 7m0-7-7 7" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>`
+};
+
+/* ===================== AUDIO (learner controlled) ===================== */
+const VOICE={Narrator:[1,0.9],Rina:[1.25,0.95],Sari:[1.1,0.9],Dimas:[0.8,0.92],Andi:[0.95,0.95]};
+let current=null;
+function stopAudio(){ if(current&&current.pause) current.pause(); if(window.speechSynthesis) speechSynthesis.cancel(); current=null; document.querySelectorAll('.on[data-audio]').forEach(b=>b.classList.remove('on')); }
+function speak(text,file,btn,who,onEnd){
+  stopAudio(); let ended=false;
+  const done=()=>{ if(ended) return; ended=true; if(btn) btn.classList.remove('on'); if(onEnd) onEnd(); };
+  if(btn) btn.classList.add('on');
+  if(AUDIO_BASE&&file){ let fb=false; const fallback=()=>{ if(fb) return; fb=true; tts(text,who,done); }; const a=new Audio(AUDIO_BASE+file); current=a; a.onended=done; a.onerror=fallback; a.play().catch(fallback); return; }
+  tts(text,who,done);
+}
+function tts(text,who,done){
+  if(!('speechSynthesis' in window)){ done(); return; }
+  const u=new SpeechSynthesisUtterance(String(text).replace(/…|\.\.\./g,',').replace(/\[\[|\]\]/g,''));
+  u.lang='en-US'; const v=VOICE[who]||[1,0.9]; u.pitch=v[0]; u.rate=v[1];
+  const vo=speechSynthesis.getVoices().find(x=>/^en(-|_)(US|GB)/i.test(x.lang)); if(vo) u.voice=vo;
+  u.onend=done; u.onerror=done; speechSynthesis.speak(u);
+}
+
+/* ===================== STATE (saved on this device) ===================== */
+const KEY='floca-u'+DATA.unit;
+const S={gloss:{},view:'home',seg:1,card:0,q:0,ret:null,att:{},firstTry:{},firstMiss:{},sel:null,matched:{},shuffle:{},set:'seg',revList:null,
+  saved:{segs:{},review:null,missed:[],produce:''}};
+try{ const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s) S.saved=Object.assign(S.saved,s); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(S.saved)); }catch(e){} }
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mark=s=>esc(s).replace(/\[\[(.+?)\|(.+?)\]\]/g,'<button class="t" data-term="$2">$1</button>').replace(/\[\[(.+?)\]\]/g,'<span class="t">$1</span>');
+const shuffled=(key,arr)=>{ if(!S.shuffle[key]){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} S.shuffle[key]=a; } return S.shuffle[key]; };
+const C=id=>DATA.cards[id];
+const SEG=n=>DATA.segments.find(s=>s.n===n);
+const qList=()=> S.set==='review' ? S.revList : DATA.questions[S.seg];
+
+function topBar(back){
+  return `<div class="top"><div class="brand">Floca <span>· Agree &amp; Disagree</span></div>${back?`<button class="back" id="home">← Unit ${DATA.unit} menu</button>`:''}</div>`;
+}
+function steps(i){
+  const names=['Read','Words','Practice','Review'];
+  return `<div class="unit-lab">Unit ${DATA.unit}</div><h1>${esc(DATA.title)}</h1>
+  <ol class="steps" aria-label="Unit steps">${names.map((n,k)=>`<li class="${k<i?'done':k===i?'on':''}" ${k===i?'aria-current="step"':''}><i></i>${n}</li>`).join('')}</ol>`;
+}
+const voiceNote=()=>AUDIO_BASE?'':`<div class="note">Practice voice: your device reads the words for now. Recorded audio will replace it.</div>`;
+
+/* ===================== VIEWS ===================== */
+function render(){
+  stopAudio();
+  const v=S.view, app=$('#app');
+  app.innerHTML = v==='home'?vHome(): v==='text'?vText(): v==='cards'?vCards(): v==='practice'?vPractice():
+    v==='card'?vOneCard(): v==='segdone'?vSegDone(): v==='produce'?vProduce(): vRevDone();
+  bind(); window.scrollTo(0,0);
+}
+function vHome(){
+  const sg=S.saved.segs, nSeg=DATA.segments.length, segDone=DATA.segments.filter(s=>sg[s.n]).length;
+  const items=[`<li><button class="item ${S.saved.read?'done':''}" data-open="text"><span class="n">1</span><span><b>Read and listen</b><small>${DATA.kind==='poster'?'The poster and the comments':'The conversation'}</small></span>${S.saved.read?'<span class="st">Done</span>':''}</button></li>`];
+  DATA.segments.forEach((s,k)=>{ const r=sg[s.n];
+    items.push(`<li><button class="item ${r?'done':''}" data-seg="${s.n}"><span class="n">${k+2}</span><span><b>Part ${s.n}: ${esc(s.name)}</b><small>${s.ids.length} words and expressions · cards and practice</small></span>${r?`<span class="st">${r.first}/${r.total}</span>`:''}</button></li>`); });
+  const rv=S.saved.review;
+  items.push(`<li><button class="item ${rv?'done':''}" data-open="review"><span class="n">${nSeg+2}</span><span><b>Unit review</b><small>Mixed practice${DATA.unit>1?' with words from earlier units':''}</small></span>${rv?`<span class="st">${rv.first}/${rv.total}</span>`:''}</button></li>`);
+  items.push(`<li><button class="item ${S.saved.produce?'done':''}" data-open="produce"><span class="n">${nSeg+3}</span><span><b>Your turn</b><small>Write your own opinion</small></span>${S.saved.produce?'<span class="st">Done</span>':''}</button></li>`);
+  return topBar(false)+`<div class="unit-lab">Unit ${DATA.unit}</div><h1>${esc(DATA.title)}</h1>
+   <p class="muted small" style="margin-top:6px">${segDone} of ${nSeg} parts done. Go in order, or choose any part.</p>
+   <ul class="menu">${items.join('')}</ul>${voiceNote()}`;
+}
+function lineHTML(l,i){
+  const who=l.part==='poster'?'':`<div class="who">${esc(l.who)}</div>`;
+  return `<div class="line"><button class="play" data-audio data-line="${i}" aria-label="Listen to ${esc(l.part==='poster'?'this part of the poster':l.who)}">${ICON.spk}</button><div>${who}<p lang="en">${mark(l.text)}</p></div></div>`;
+}
+function vText(){
+  let body='';
+  if(DATA.kind==='poster'){
+    const p=DATA.lines.map((l,i)=>[l,i]).filter(x=>x[0].part==='poster'), c=DATA.lines.map((l,i)=>[l,i]).filter(x=>x[0].part==='comment');
+    body=`<div class="sub">Poster</div><div class="poster">${p.map(x=>lineHTML(...x)).join('')}</div><div class="sub">Comments</div>${c.map(x=>lineHTML(...x)).join('')}`;
+  } else body=DATA.lines.map((l,i)=>lineHTML(l,i)).join('');
+  return topBar(true)+steps(0)+`<p class="sit">${esc(DATA.situation)}</p><p class="small muted">Tap a highlighted word to see its card.</p>
+   ${body}<div class="row"><button class="btn" id="playAll" data-audio>Play all</button><button class="btn pri" id="toPart1">Go to Part 1</button></div>${voiceNote()}`;
+}
+function cardHTML(c){
+  return `<article class="card" aria-label="Card: ${esc(c.term)}">
+   ${c.img&&ILLU[c.img]?`<div class="illu">${ILLU[c.img]}</div>`:''}
+   <span class="chip">${esc(c.label)}</span>
+   <div class="term" lang="en">${esc(c.term)}</div>
+   <button class="audio" data-audio data-card="${c.id}" aria-label="Listen: ${esc(c.term)}"><span class="c">${ICON.spk}</span>Listen</button>
+   <div class="lab">Meaning</div><p>${esc(c.meaning)}</p>
+   ${c.id_mean?`<button class="gloss" data-gloss="${c.id}" aria-expanded="${S.gloss[c.id]?'true':'false'}">${S.gloss[c.id]?'Hide Indonesian meaning':'Show Indonesian meaning'}</button>${S.gloss[c.id]?`<p class="glosstext" lang="id">${esc(c.id_mean)}</p>`:''}`:''}
+   <div class="lab">${c.unit===DATA.unit?'From the text':'From Unit '+c.unit}</div><div class="quote" lang="en">${esc(c.example)}</div>
+   ${c.note?`<div class="lab">Note</div><p class="small">${esc(c.note)}</p>`:''}
+  </article>`;
+}
+function segBar(label,right){
+  return `<div class="seg"><span><b>${label}</b></span><span>${right}</span></div><div class="bar" aria-hidden="true">${DATA.segments.map(s=>`<i class="${s.n<=S.seg?'on':''}"></i>`).join('')}</div>`;
+}
+function vCards(){
+  const s=SEG(S.seg), c=C(s.ids[S.card]), n=s.ids.length, last=S.card===n-1;
+  return topBar(true)+steps(1)+segBar(`Part ${s.n}: ${esc(s.name)}`,`Card ${S.card+1} of ${n}`)+cardHTML(c)+
+   `<div class="dots" aria-hidden="true">${s.ids.map((_,k)=>`<i class="${k===S.card?'on':''}"></i>`).join('')}</div>
+   <div class="row"><button class="btn" id="prevCard">${S.card===0?'Back':'Previous'}</button><button class="btn pri" id="nextCard">${last?'Start practice':'Next'}</button></div>`;
+}
+function fbHTML(ok,text){ return `<div class="fb ${ok?'':'no'}" role="status"><div class="h">${ok?ICON.ok:ICON.no}${ok?'Correct':'Not yet'}</div><p>${text}</p></div>`; }
+function vPractice(){
+  const list=qList(), q=list[S.q], n=list.length, a=S.att[q.id]||{tries:0,done:false,last:null};
+  let head='', body='';
+  if(q.listen) head+=`<div style="margin-bottom:12px"><button class="audio" data-audio data-listen="1"><span class="c">${ICON.spk}</span>Listen</button></div>`;
+  if(q.line) head+=`${q.ctx?`<div class="ctx"><b>${esc(q.ctx.who)}:</b> ${esc(q.ctx.text)}</div>`:''}<div class="gapline" lang="en"><b>${esc(q.line.who)}:</b> ${esc(q.line.text).replace('_____','<span class="t">_____</span>')}</div>`;
+  if(q.type==='choice'){
+    const opts=shuffled(q.id,q.options);
+    body=opts.map((o,k)=>{ let cls=''; if(a.done&&o===q.answer) cls='ok'; else if(a.last===o&&!a.done) cls='no';
+      return `<button class="opt ${cls}" data-opt="${esc(o)}" ${a.done||a.tries>=2?'disabled':''}><span class="k">${'ABC'[k]}</span><span lang="en">${esc(o)}</span></button>`; }).join('');
+    if(a.done) body+=fbHTML(true,esc(q.why));
+    else if(a.last) body+=fbHTML(false,a.tries>=2?`The answer is <b>${esc(q.answer)}</b>. ${esc(q.why)}`:esc(q.hint)+' Try again.');
+  } else if(q.type==='match'){
+    const left=shuffled(q.id+'L',q.pairs.map(p=>p[0])), right=shuffled(q.id+'R',q.pairs.map(p=>p[1])), m=S.matched[q.id]||{};
+    body=`<div class="match"><div>${left.map(t=>`<button class="opt ${m[t]?'done':''} ${S.sel===t?'sel':''}" data-left="${esc(t)}" ${m[t]?'disabled':''} lang="en">${esc(t)}</button>`).join('')}</div>
+     <div>${right.map(t=>{const used=Object.values(m).includes(t);return `<button class="opt ${used?'done':''}" data-right="${esc(t)}" ${used?'disabled':''} lang="en">${esc(t)}</button>`}).join('')}</div></div>`;
+    if(a.done) body+=fbHTML(true,'All pairs match. '+esc(q.why));
+    else if(a.last==='miss') body+=fbHTML(false,'That pair does not match. Read the meaning again and try another pair.');
+    else if(!S.sel) body+=`<p class="small muted">Tap a word on the left first.</p>`;
+  } else if(q.type==='input'){
+    body=`<label class="sr" for="ans">Your answer</label><input class="inp" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" lang="en" value="${esc(a.val||'')}" ${a.done||a.tries>=2?'disabled':''} placeholder="Type the word">
+     ${a.done||a.tries>=2?'':`<div class="row"><button class="btn pri" id="checkInput">Check</button></div>`}`;
+    if(a.done) body+=`<div style="height:10px"></div>`+fbHTML(true,esc(q.why));
+    else if(a.last) body+=`<div style="height:10px"></div>`+fbHTML(false,a.tries>=2?`The answer is <b>${esc(q.accept[0])}</b>. ${esc(q.why)}`:esc(q.hint)+' Try again.');
+  }
+  const canNext=a.done||a.tries>=2, lastQ=S.q===n-1;
+  const title=S.set==='review'?'Unit review':`Part ${S.seg} practice`;
+  return topBar(true)+steps(S.set==='review'?3:2)+segBar(title,`Question ${S.q+1} of ${n}`)+
+   `<div class="kind">${esc(q.kind)}</div><div class="prompt">${q.prompt}${head?`<div style="margin-top:10px">${head}</div>`:''}</div>${body}
+   <div class="row">${q.card?`<button class="btn" id="seeCard">See card</button>`:''}<button class="btn pri" id="nextQ" ${canNext?'':'disabled'}>${lastQ?'Finish':'Next question'}</button></div>`;
+}
+function vOneCard(){
+  return topBar(true)+`<div class="seg" style="margin-bottom:10px"><span><b>Card</b></span></div>`+cardHTML(C(S.cardId))+
+   `<div class="row"><button class="btn pri" id="backFromCard">Back</button></div>`;
+}
+function result(list){
+  const scored=list.filter(q=>q.type!=='produce'), first=scored.filter(q=>S.firstTry[q.id]===true).length;
+  const miss=new Set();
+  scored.forEach(q=>{
+    if(q.type==='match') (S.firstMiss[q.id]||[]).forEach(t=>{ const c=Object.values(DATA.cards).find(x=>x.term===t); if(c) miss.add(c.id); });
+    else if(S.firstTry[q.id]!==true&&q.card) miss.add(q.card); });
+  return {first,total:scored.length,miss:[...miss]};
+}
+function chips(ids){ return ids.length?`<div class="lab">Cards to look at again</div><div class="chips">${ids.map(id=>`<button data-term="${id}" lang="en">${esc(C(id).term)}</button>`).join('')}</div>`:`<p class="muted small" style="margin-top:6px">Great work. You remembered them all.</p>`; }
+function vSegDone(){
+  const r=S.lastResult, s=SEG(S.seg), next=DATA.segments.find(x=>x.n===S.seg+1);
+  return topBar(true)+steps(2)+`<h2>Part ${s.n} done</h2><p style="margin-top:6px">Correct on the first try: <b>${r.first} of ${r.total}</b></p>${chips(r.miss)}
+   <div class="row"><button class="btn" id="redo">Practice again</button><button class="btn pri" id="${next?'nextSeg':'toReview'}">${next?'Go to Part '+next.n:'Unit review'}</button></div>`;
+}
+function vRevDone(){
+  const r=S.lastResult;
+  return topBar(true)+steps(3)+`<h2>Unit review done</h2><p style="margin-top:6px">Correct on the first try: <b>${r.first} of ${r.total}</b></p>${chips(r.miss)}
+   <div class="row"><button class="btn" id="redoRev">Review again</button><button class="btn pri" data-open="produce">Your turn</button></div>`;
+}
+function vProduce(){
+  const p=DATA.produce, shown=S.showModel;
+  return topBar(true)+steps(3)+`<div class="kind">Your turn</div><div class="prompt">${esc(p.prompt)}</div>
+   <label class="sr" for="free">Your answer</label><textarea class="inp" id="free" lang="en" placeholder="Write your answer here">${esc(S.saved.produce||'')}</textarea>
+   ${shown?`<div class="model"><div class="lab" style="margin-top:0">Example answer</div><p lang="en">${esc(p.model)}</p></div>
+   <div class="lab">Check your own answer</div>${p.check.map(t=>`<label class="check"><input type="checkbox"> <span>${esc(t)}</span></label>`).join('')}
+   <div class="row"><button class="btn pri" id="home2">Back to Unit ${DATA.unit} menu</button></div>`
+   :`<div class="row"><button class="btn pri" id="showModel">Show an example answer</button></div>`}`;
+}
+
+/* ===================== ACTIONS ===================== */
+function startSeg(n){ Object.assign(S,{seg:n,card:0,view:'cards'}); render(); }
+function startPractice(set){
+  S.set=set; S.q=0; S.att={}; S.firstTry={}; S.firstMiss={}; S.matched={}; S.shuffle={}; S.sel=null;
+  if(set==='review'){ const missed=new Set(S.saved.missed); const r=DATA.review.slice();
+    for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}
+    S.revList=r.filter(q=>missed.has(q.card)).concat(r.filter(q=>!missed.has(q.card))); }
+  S.view='practice'; render();
+}
+function finish(){
+  const r=result(qList()); S.lastResult=r;
+  const missed=new Set(S.saved.missed);
+  qList().forEach(q=>{ if(q.card&&S.firstTry[q.id]===true&&S.set==='review') missed.delete(q.card); });
+  r.miss.forEach(id=>missed.add(id)); S.saved.missed=[...missed];
+  if(S.set==='review'){ S.saved.review={first:r.first,total:r.total}; S.view='revdone'; }
+  else { S.saved.segs[S.seg]={first:r.first,total:r.total}; S.view='segdone'; }
+  save(); render();
+}
+function attempt(q,ok,val){
+  const a=S.att[q.id]||{tries:0,done:false,last:null};
+  a.tries++; a.last=val; if(val!==undefined) a.val=val;
+  if(S.firstTry[q.id]===undefined) S.firstTry[q.id]=ok;
+  if(ok) a.done=true; S.att[q.id]=a;
+}
+function openCard(id,from){ S.cardId=id; S.ret=from; S.view='card'; render(); }
+function bind(){
+  const on=(sel,fn)=>{ const e=$(sel); if(e) e.onclick=fn; };
+  on('#home',()=>{S.view='home';render();}); on('#home2',()=>{S.saved.produce=$('#free').value;save();S.view='home';render();});
+  document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{ const o=b.dataset.open;
+    if(o==='text'){S.view='text';render();} else if(o==='review') startPractice('review'); else {S.showModel=false;S.view='produce';render();} });
+  document.querySelectorAll('[data-seg]').forEach(b=>b.onclick=()=>startSeg(+b.dataset.seg));
+  document.querySelectorAll('[data-term]').forEach(b=>b.onclick=()=>openCard(b.dataset.term,S.view));
+  document.querySelectorAll('[data-line]').forEach(b=>b.onclick=()=>{const l=DATA.lines[+b.dataset.line]; speak(l.text,l.audio,b,l.who);});
+  const pa=$('#playAll'); if(pa) pa.onclick=()=>{ let i=0; const next=()=>{ if(i>=DATA.lines.length) return; const l=DATA.lines[i]; const btn=document.querySelector(`[data-line="${i}"]`); i++; speak(l.text,l.audio,btn,l.who,next); }; next(); };
+  on('#toPart1',()=>{S.saved.read=true;save();startSeg(1);});
+  document.querySelectorAll('[data-gloss]').forEach(b=>b.onclick=()=>{ const id=b.dataset.gloss; S.gloss[id]=!S.gloss[id]; const y=window.scrollY; render(); window.scrollTo(0,y); });
+  document.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>{const c=C(b.dataset.card); speak(c.say,c.audio,b,'Narrator');});
+  on('#prevCard',()=>{ if(S.card===0){S.view='home';} else S.card--; render(); });
+  on('#nextCard',()=>{ if(S.card===SEG(S.seg).ids.length-1) startPractice('seg'); else {S.card++; render();} });
+  on('#backFromCard',()=>{ S.view=S.ret||'home'; render(); });
+  if(S.view==='practice'){
+    const q=qList()[S.q];
+    const ls=document.querySelector('[data-listen]'); if(ls) ls.onclick=()=>{const c=C(q.card); speak(q.listen.text,q.listen.audio,ls,'Narrator');};
+    document.querySelectorAll('[data-opt]').forEach(b=>b.onclick=()=>{ attempt(q,b.dataset.opt===q.answer,b.dataset.opt); render(); });
+    document.querySelectorAll('[data-left]').forEach(b=>b.onclick=()=>{ S.sel=b.dataset.left; const a=S.att[q.id]; if(a) a.last=null; render(); });
+    document.querySelectorAll('[data-right]').forEach(b=>b.onclick=()=>{
+      if(!S.sel) return; const pair=q.pairs.find(p=>p[0]===S.sel), ok=pair[1]===b.dataset.right;
+      const a=S.att[q.id]||{tries:0,done:false,last:null}; a.tries++;
+      if(!ok){ if(S.firstTry[q.id]===undefined) S.firstTry[q.id]=false; (S.firstMiss[q.id]=S.firstMiss[q.id]||[]).push(S.sel); a.last='miss'; }
+      else { (S.matched[q.id]=S.matched[q.id]||{})[S.sel]=b.dataset.right; a.last=null; }
+      if(Object.keys(S.matched[q.id]||{}).length===q.pairs.length){ a.done=true; if(S.firstTry[q.id]===undefined) S.firstTry[q.id]=true; }
+      S.att[q.id]=a; S.sel=null; render(); });
+    const ci=$('#checkInput'); if(ci){ const inp=$('#ans'); const go=()=>{ const v=inp.value.trim(); if(!v){inp.focus();return;} attempt(q,q.accept.some(x=>x.toLowerCase()===v.toLowerCase()),v); render(); }; ci.onclick=go; inp.onkeydown=e=>{if(e.key==='Enter')go();}; }
+    on('#seeCard',()=>openCard(q.card,'practice'));
+    const nq=$('#nextQ'); if(nq) nq.onclick=()=>{ if(nq.disabled) return; if(S.q===qList().length-1) finish(); else {S.q++; S.sel=null; render();} };
+  }
+  on('#redo',()=>startPractice('seg')); on('#redoRev',()=>startPractice('review'));
+  on('#nextSeg',()=>startSeg(S.seg+1)); on('#toReview',()=>startPractice('review'));
+  on('#showModel',()=>{ S.saved.produce=$('#free').value; save(); S.showModel=true; render(); });
+}
+if('speechSynthesis' in window){ speechSynthesis.getVoices(); }
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floca · Class Schedule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   FLOCA · Class Schedule (experimental classes)
+   Edit only the DATA section in the <script> below.
+   ========================================================= */
+:root{
+  --sage:#3E7A5C; --sage-d:#2F6A4F; --mint:#E3F3E9; --rose:#B04A6E; --blush:#FBE3EA;
+  --ink:#2B2A33; --muted:#66636E; --line:#E7E1E5; --soft:#FAF7F9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:var(--ink);font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.5}
+.app{max-width:640px;margin:0 auto;padding:16px 16px 28px}
+h1,h2,.big{font-family:Poppins,Inter,Arial,sans-serif;font-weight:600}
+h1{font-size:23px;line-height:1.25}
+h2{font-size:17px;margin:22px 0 8px}
+.muted{color:var(--muted)} .small{font-size:14px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--rose);outline-offset:2px}
+.sample{background:var(--soft);border:1px dashed var(--line);border-radius:12px;padding:8px 12px;font-size:13px;color:var(--muted);margin-bottom:14px}
+.next{background:var(--blush);border-radius:18px;padding:16px 18px;margin:16px 0 4px}
+.next .lab{font-size:13px;font-weight:700;color:var(--rose)}
+.next .big{font-size:19px;margin:4px 0 2px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px}
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);font-size:14px;font-weight:600;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--sage);border-color:var(--sage);color:#fff}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.prog{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:10px}
+.pc{border:1.5px solid var(--line);border-radius:14px;padding:10px 12px}
+.pc b{display:flex;align-items:center;gap:6px;font-size:14px}
+.bar{height:6px;border-radius:3px;background:var(--line);margin:8px 0 4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sage)}
+.day{font-weight:700;font-size:14px;margin:18px 0 6px;display:flex;align-items:center;gap:8px}
+.day .today{font-size:12px;background:var(--rose);color:#fff;border-radius:999px;padding:1px 8px}
+.ev{border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+.ev.is-today{border-color:var(--rose);background:#FFF8FA}
+.ev.is-done{opacity:.7}
+.row{display:flex;gap:12px;align-items:flex-start}
+.time{width:104px;flex:none;font-size:14px;color:var(--muted);padding-top:1px}
+.what{flex:1;min-width:0}
+.cls{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700}
+.title{font-weight:600;margin:2px 0}
+.badge{font-size:12px;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.b-done{background:var(--mint);color:var(--sage-d)}
+.b-today{background:var(--rose);color:#fff}
+.b-up{background:var(--soft);color:var(--muted);border:1px solid var(--line)}
+details{margin-top:8px}
+summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--sage-d);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ ";} details[open] summary::before{content:"– ";}
+details ul{margin:6px 0 0 18px;font-size:14px}
+details li{margin:3px 0}
+.links{margin-top:8px;font-size:14px}
+.links a{color:var(--sage-d);font-weight:600}
+.empty{padding:14px;border-radius:14px;background:var(--soft);color:var(--muted);font-size:14px}
+@media (max-width:420px){.time{width:84px;font-size:13px}}
+</style>
+</head>
+<body>
+<main class="app" id="app"></main>
+
+<script>
+/* =========================================================
+   DATA — edit this part only
+   date: YYYY-MM-DD · start/end: HH:MM (WIB, 24-hour)
+   ========================================================= */
+const CONFIG = {
+  sample: true,                       // set to false after the real schedule is filled in
+  teacher: "Mrs. Dwi Putri",
+  school: "SMA Negeri 1 Tahunan",
+  timezone: "Asia/Jakarta"
+};
+
+const CLASSES = [
+  { id:"E1", name:"Class X-? (E1)", color:"#3E7A5C" },
+  { id:"E2", name:"Class X-? (E2)", color:"#B04A6E" },
+  { id:"E3", name:"Class X-? (E3)", color:"#8A6212" },
+  { id:"E4", name:"Class X-? (E4)", color:"#5E5A9A" }
+];
+
+/* type: pretest | m1 | m2 | m3 | posttest */
+const SESSIONS = [
+  { cls:"E1", type:"pretest",  date:"2027-01-11", start:"07:00", end:"07:45", room:"" },
+  { cls:"E2", type:"pretest",  date:"2027-01-11", start:"10:15", end:"11:00", room:"" },
+  { cls:"E3", type:"pretest",  date:"2027-01-12", start:"07:00", end:"07:45", room:"" },
+  { cls:"E4", type:"pretest",  date:"2027-01-12", start:"12:30", end:"13:15", room:"" },
+  { cls:"E1", type:"m1",       date:"2027-01-13", start:"07:00", end:"08:30", room:"" },
+  { cls:"E2", type:"m1",       date:"2027-01-13", start:"10:15", end:"11:45", room:"" },
+  { cls:"E3", type:"m1",       date:"2027-01-14", start:"07:00", end:"08:30", room:"" },
+  { cls:"E4", type:"m1",       date:"2027-01-14", start:"12:30", end:"14:00", room:"" },
+  { cls:"E1", type:"m2",       date:"2027-01-18", start:"07:00", end:"08:30", room:"" },
+  { cls:"E2", type:"m2",       date:"2027-01-18", start:"10:15", end:"11:45", room:"" },
+  { cls:"E3", type:"m2",       date:"2027-01-19", start:"07:00", end:"08:30", room:"" },
+  { cls:"E4", type:"m2",       date:"2027-01-19", start:"12:30", end:"14:00", room:"" },
+  { cls:"E1", type:"m3",       date:"2027-01-25", start:"07:00", end:"08:30", room:"" },
+  { cls:"E2", type:"m3",       date:"2027-01-25", start:"10:15", end:"11:45", room:"" },
+  { cls:"E3", type:"m3",       date:"2027-01-26", start:"07:00", end:"08:30", room:"" },
+  { cls:"E4", type:"m3",       date:"2027-01-26", start:"12:30", end:"14:00", room:"" },
+  { cls:"E1", type:"posttest", date:"2027-01-27", start:"07:00", end:"07:45", room:"" },
+  { cls:"E2", type:"posttest", date:"2027-01-27", start:"10:15", end:"11:00", room:"" },
+  { cls:"E3", type:"posttest", date:"2027-01-28", start:"07:00", end:"07:45", room:"" },
+  { cls:"E4", type:"posttest", date:"2027-01-28", start:"12:30", end:"13:15", room:"" }
+];
+
+const TYPES = {
+  pretest:  { title:"Pretest", prep:["Print the test sheets and answer sheets.","Prepare the audio for Part 1 and a speaker.","Students do not open Floca before the pretest."] },
+  m1:       { title:"Meeting 1 · Unit 1: A Plastic-Free Canteen", prep:["Share the Floca link with the class.","Students bring a phone; check the classroom Wi-Fi or mobile data.","Follow the lesson plan for Meeting 1."] },
+  m2:       { title:"Meeting 2 · Unit 2: Turn It Off!", prep:["Start with the review at the beginning of Unit 2.","Students bring a phone.","Follow the lesson plan for Meeting 2."] },
+  m3:       { title:"Meeting 3 · Unit 3: A Safe School for Everyone", prep:["Start with the review at the beginning of Unit 3.","Students bring a phone.","Follow the lesson plan for Meeting 3."] },
+  posttest: { title:"Posttest", prep:["Print the test sheets and answer sheets.","Prepare the audio for Part 1 and a speaker.","After the test, students fill in the questionnaire."] }
+};
+
+/* =========================================================
+   APP — no need to edit below this line
+   ========================================================= */
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cls = id=>CLASSES.find(c=>c.id===id);
+let filter = "all";
+
+function nowJakarta(){
+  const p = new Intl.DateTimeFormat('en-CA',{timeZone:CONFIG.timezone,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date());
+  const g = t=>p.find(x=>x.type===t).value;
+  return { date:`${g('year')}-${g('month')}-${g('day')}`, time:`${g('hour')==='24'?'00':g('hour')}:${g('minute')}` };
+}
+function status(s, now){
+  if(s.date<now.date || (s.date===now.date && s.end<=now.time)) return 'done';
+  if(s.date===now.date) return 'today';
+  return 'up';
+}
+function niceDate(d){
+  const [y,m,dd]=d.split('-').map(Number);
+  return new Date(Date.UTC(y,m-1,dd,12)).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+}
+function gcalLink(s){
+  const c=cls(s.cls), t=TYPES[s.type];
+  const f=(d,h)=>d.replace(/-/g,'')+'T'+h.replace(':','')+'00';
+  const q=new URLSearchParams({action:'TEMPLATE',text:`Floca · ${c.name} · ${t.title}`,dates:`${f(s.date,s.start)}/${f(s.date,s.end)}`,ctz:CONFIG.timezone,details:t.prep.join('\n'),location:s.room||CONFIG.school});
+  return 'https://calendar.google.com/calendar/render?'+q.toString();
+}
+const byTime=(a,b)=>(a.date+a.start).localeCompare(b.date+b.start);
+
+function render(){
+  const now=nowJakarta();
+  const list=SESSIONS.filter(s=>filter==='all'||s.cls===filter).sort(byTime);
+  const next=SESSIONS.slice().sort(byTime).find(s=>status(s,now)!=='done' && (filter==='all'||s.cls===filter));
+
+  let h='';
+  if(CONFIG.sample) h+=`<div class="sample">Sample schedule. The dates, times, and class names are examples and will be replaced with the real schedule.</div>`;
+  h+=`<h1>Class Schedule</h1><p class="muted small">Experimental classes · Teacher: ${esc(CONFIG.teacher)} · Times in WIB</p>`;
+
+  if(next){
+    const c=cls(next.cls);
+    h+=`<section class="next" aria-label="Next session"><div class="lab">${status(next,now)==='today'?'Today':'Next session'}</div>
+      <div class="big">${esc(TYPES[next.type].title)}</div>
+      <div class="small"><span class="cls"><span class="dot" style="background:${c.color}"></span>${esc(c.name)}</span> · ${esc(niceDate(next.date))}, ${next.start}–${next.end}${next.room?` · ${esc(next.room)}`:''}</div></section>`;
+  } else {
+    h+=`<section class="next"><div class="lab">All done</div><div class="big">All sessions are finished.</div></section>`;
+  }
+
+  h+=`<div class="filters" role="group" aria-label="Show class">`+
+     `<button class="chip" data-f="all" aria-pressed="${filter==='all'}">All classes</button>`+
+     CLASSES.map(c=>`<button class="chip" data-f="${c.id}" aria-pressed="${filter===c.id}"><span class="dot" style="background:${filter===c.id?'#fff':c.color}"></span>${esc(c.id)}</button>`).join('')+`</div>`;
+
+  h+=`<h2>Progress</h2><div class="prog">`+CLASSES.filter(c=>filter==='all'||c.id===filter).map(c=>{
+      const all=SESSIONS.filter(s=>s.cls===c.id), done=all.filter(s=>status(s,now)==='done').length;
+      return `<div class="pc"><b><span class="dot" style="background:${c.color}"></span>${esc(c.name)}</b><div class="bar"><i style="width:${all.length?done/all.length*100:0}%"></i></div><span class="small muted">${done} of ${all.length} sessions done</span></div>`;
+    }).join('')+`</div>`;
+
+  h+=`<h2>All sessions</h2>`;
+  if(!list.length) h+=`<div class="empty">No sessions yet.</div>`;
+  let lastDate='';
+  list.forEach(s=>{
+    const c=cls(s.cls), t=TYPES[s.type], st=status(s,now);
+    if(s.date!==lastDate){ h+=`<div class="day">${esc(niceDate(s.date))}${s.date===now.date?'<span class="today">Today</span>':''}</div>`; lastDate=s.date; }
+    const badge = st==='done'?'<span class="badge b-done">Done</span>':st==='today'?'<span class="badge b-today">Today</span>':'<span class="badge b-up">Upcoming</span>';
+    h+=`<article class="ev ${st==='today'?'is-today':st==='done'?'is-done':''}"><div class="row">
+      <div class="time">${s.start}–${s.end}</div>
+      <div class="what"><span class="cls"><span class="dot" style="background:${c.color}"></span>${esc(c.name)}</span>
+        <div class="title">${esc(t.title)}</div>${s.room?`<div class="small muted">${esc(s.room)}</div>`:''}
+        <details><summary>What to prepare</summary><ul>${t.prep.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details>
+        <div class="links"><a href="${gcalLink(s)}" target="_blank" rel="noopener">Add to Google Calendar</a></div>
+      </div>${badge}</div></article>`;
+  });
+  $('#app').innerHTML=h;
+  document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filter=b.dataset.f;render();});
+}
+render();
+setInterval(render, 60000);
+</script>
+</body>
+</html>

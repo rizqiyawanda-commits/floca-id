@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floca · Unit 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   FLOCA · Unit 1 · Bring Your Own Bottle
+   Content lives in DATA (generated from the researcher's content file).
+   Audio: set AUDIO_BASE to the folder URL that holds the mp3 files.
+   ========================================================= */
+:root{
+  --sage:#3E7A5C; --sage-d:#2F6A4F; --mint:#E3F3E9; --mint-l:#F2F9F4; --mint-m:#A9D3BA;
+  --rose:#B04A6E; --blush:#FBE3EA; --blush-l:#FDF2F5;
+  --ink:#2B2A33; --muted:#66636E; --line:#E7E1E5; --paper:#FFFFFF; --soft:#FAF7F9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.55}
+.app{max-width:560px;margin:0 auto;padding:16px 16px 28px}
+h1,h2,.term,.brand{font-family:Poppins,Inter,Arial,sans-serif;font-weight:600}
+h1{font-size:22px;line-height:1.25} h2{font-size:18px;line-height:1.3}
+.muted{color:var(--muted)} .small{font-size:14px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--rose);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;min-height:40px}
+.brand{font-size:15px;color:var(--rose)} .brand span{color:var(--muted);font-family:Inter,Arial,sans-serif;font-weight:400;font-size:13px}
+.back{font-size:14px;font-weight:600;color:var(--sage-d);min-height:40px;padding:0 4px}
+.gloss{margin-top:8px;font-size:14px;font-weight:600;color:var(--rose);min-height:40px;padding:0 2px;text-decoration:underline;text-underline-offset:3px}
+.glosstext{background:var(--blush-l);border-radius:10px;padding:8px 12px;margin-top:4px;font-size:15px}
+.note{background:var(--soft);border:1px dashed var(--line);border-radius:12px;padding:8px 12px;font-size:13px;color:var(--muted);margin:10px 0}
+.unit-lab{font-size:14px;font-weight:600;color:var(--muted)}
+/* stepper */
+.steps{display:flex;gap:6px;margin:12px 0 16px;list-style:none}
+.steps li{flex:1;text-align:center;font-size:11.5px;color:var(--muted)}
+.steps li i{display:block;height:5px;border-radius:3px;background:var(--line);margin-bottom:5px}
+.steps li.done i{background:var(--mint-m)} .steps li.on{color:var(--sage-d);font-weight:700}.steps li.on i{background:var(--sage)}
+/* home menu */
+.menu{list-style:none;margin-top:14px}
+.item{display:flex;width:100%;text-align:left;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px;min-height:64px}
+.item .n{width:34px;height:34px;flex:none;border-radius:50%;background:var(--blush);color:var(--rose);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+.item.done .n{background:var(--sage);color:#fff}
+.item b{display:block;font-size:15.5px} .item small{color:var(--muted);font-size:13px}
+.item .st{margin-left:auto;font-size:12px;font-weight:700;color:var(--sage-d);white-space:nowrap}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:12px;font-weight:600;border:1.5px solid var(--sage);color:var(--sage-d);background:#fff}
+.btn.pri{background:var(--sage);color:#fff} .btn[disabled]{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;margin-top:16px}.row .btn{flex:1}
+/* highlight */
+.t{background:var(--blush);font-weight:600;padding:0 3px;border-radius:3px;box-shadow:inset 0 -2px 0 var(--rose)}
+button.t{font-weight:600;cursor:pointer;color:var(--ink)}
+/* text */
+.sit{font-style:italic;color:var(--muted);font-size:14px;margin-bottom:6px}
+.line{display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)} .line:last-child{border-bottom:0}
+.who{font-weight:700;font-size:14px;color:var(--sage-d)}
+.play{width:40px;height:40px;flex:none;border-radius:50%;border:1.5px solid var(--sage);color:var(--sage);display:flex;align-items:center;justify-content:center}
+.play.on{background:var(--sage);color:#fff}
+.poster{border:2px solid var(--mint-m);background:var(--mint-l);border-radius:20px;padding:14px 14px 6px;margin:6px 0 16px}
+.poster .line{border-bottom:1px dashed #CFE6D8}
+.poster .line:first-child p{font-family:Poppins,Inter,Arial,sans-serif;font-size:18px;line-height:1.35}
+.sub{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:4px 0 2px}
+/* card */
+.seg{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);gap:10px} .seg b{color:var(--ink)}
+.bar{display:flex;gap:4px;margin:8px 0 12px}.bar i{flex:1;height:5px;border-radius:3px;background:var(--line)}.bar i.on{background:var(--sage)}
+.card{border:1.5px solid var(--line);border-radius:20px;padding:18px}
+.illu{height:140px;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.chip{display:inline-block;font-size:13px;font-weight:700;color:var(--sage-d);background:var(--mint);border-radius:999px;padding:4px 12px}
+.term{font-size:26px;line-height:1.2;margin:10px 0 12px;overflow-wrap:anywhere}
+.audio{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 6px;border-radius:999px;border:1.5px solid var(--sage);color:var(--sage-d);font-weight:600}
+.audio .c{width:32px;height:32px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center}
+.audio.on .c{background:var(--rose)}
+.lab{font-size:13px;color:var(--muted);font-weight:700;margin:14px 0 3px}
+.quote{border-left:3px solid var(--sage);padding:2px 0 2px 12px;font-size:15.5px}
+.dots{display:flex;gap:6px;justify-content:center;margin-top:12px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--sage);width:20px;border-radius:4px}
+/* practice */
+.prompt{background:var(--soft);border-radius:14px;padding:14px 16px;margin:4px 0 14px;font-size:15.5px}
+.ctx{font-size:14.5px;color:var(--muted);margin-bottom:6px}
+.gapline{font-size:15.5px}
+.kind{font-size:13px;font-weight:700;color:var(--rose);margin-bottom:6px}
+.opt{display:flex;width:100%;text-align:left;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:10px;font-size:15.5px;min-height:52px}
+.opt .k{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--muted);flex:none}
+.opt.ok{border-color:var(--sage);background:var(--mint)}.opt.ok .k{background:var(--sage);border-color:var(--sage);color:#fff}
+.opt.no{border-color:var(--ink);background:#F3F2F4}.opt.no .k{background:var(--ink);border-color:var(--ink);color:#fff}
+.fb{border-radius:14px;border:1.5px solid var(--sage);padding:12px 14px;margin-top:4px}
+.fb.no{border-color:var(--ink)}
+.fb .h{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--sage-d);margin-bottom:4px} .fb.no .h{color:var(--ink)}
+.fb p{font-size:15px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match .opt{margin:0 0 10px;min-height:56px;font-size:14.5px;padding:10px 12px}
+.match .opt.sel{border-color:var(--sage);box-shadow:0 0 0 2px var(--mint) inset}
+.match .opt.done{border-color:var(--sage);background:var(--mint);color:var(--sage-d)}
+.inp{width:100%;min-height:48px;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font:inherit}
+textarea.inp{min-height:110px;resize:vertical}
+.check{display:flex;gap:10px;align-items:flex-start;margin-top:8px;font-size:15px}
+.check input{width:20px;height:20px;flex:none;margin-top:3px;accent-color:var(--sage)}
+.model{background:var(--mint-l);border-radius:12px;padding:12px 14px;margin-top:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chips button{border:1.5px solid var(--rose);color:var(--rose);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600;min-height:40px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:380px){.match{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app" id="app" aria-live="polite"></div>
+<script>
+/* ===================== SETTINGS =====================
+   AUDIO_BASE: folder URL of the recorded mp3 files, ending with "/".
+   Default "audio/" = the audio folder next to this file (GitHub Pages).
+   If a file is missing, the device voice is used automatically.    */
+const AUDIO_BASE = "audio/";
+const DATA = {"unit": 1, "title": "Bring Your Own Bottle", "situation": "Rina, Dimas, and Sari are class leaders. They are choosing a project for Adiwiyata Week.", "kind": "dialog", "lines": [{"code": "T01", "who": "Rina", "text": "[[What do you think about|U1-01]] a \"Bring Your Own Bottle\" day for our class project?", "audio": "FLC-AD-U1-T01.mp3", "part": "dialog"}, {"code": "T02", "who": "Dimas", "text": "[[I strongly agree with|U1-03]] it. Our class buys a lot of plastic bottles every day.", "audio": "FLC-AD-U1-T02.mp3", "part": "dialog"}, {"code": "T03", "who": "Sari", "text": "[[I totally agree.|U1-04]] [[The reason is|U1-09]] simple: tumblers are cheap and easy to wash.", "audio": "FLC-AD-U1-T03.mp3", "part": "dialog"}, {"code": "T04", "who": "Rina", "text": "Great. [[Do you agree with|U1-02]] doing it every Friday?", "audio": "FLC-AD-U1-T04.mp3", "part": "dialog"}, {"code": "T05", "who": "Dimas", "text": "[[Absolutely.|U1-05]] We have sports on Friday, so everyone needs water.", "audio": "FLC-AD-U1-T05.mp3", "part": "dialog"}, {"code": "T06", "who": "Sari", "text": "[[I'm not sure about that.|U1-14]] Some students forget their tumblers after sports.", "audio": "FLC-AD-U1-T06.mp3", "part": "dialog"}, {"code": "T07", "who": "Dimas", "text": "[[That's true, but|U1-12]] we can put a reminder in the class group on Thursday.", "audio": "FLC-AD-U1-T07.mp3", "part": "dialog"}, {"code": "T08", "who": "Sari", "text": "[[That's a good point.|U1-07]] [[I agree with your idea.|U1-06]]", "audio": "FLC-AD-U1-T08.mp3", "part": "dialog"}, {"code": "T09", "who": "Rina", "text": "[[I think so too.|U1-08]] And what about a fine for students who bring plastic bottles?", "audio": "FLC-AD-U1-T09.mp3", "part": "dialog"}, {"code": "T10", "who": "Dimas", "text": "[[I'm afraid I disagree.|U1-15]] A fine can make students feel bad.", "audio": "FLC-AD-U1-T10.mp3", "part": "dialog"}, {"code": "T11", "who": "Sari", "text": "[[I see your point, but|U1-13]] a small fine can help people remember.", "audio": "FLC-AD-U1-T11.mp3", "part": "dialog"}, {"code": "T12", "who": "Dimas", "text": "[[I don't think so.|U1-16]] A reward is better, [[because|U1-09]] rewards make students happy.", "audio": "FLC-AD-U1-T12.mp3", "part": "dialog"}, {"code": "T13", "who": "Rina", "text": "[[I partly agree with|U1-10]] Dimas. A reward is good, but we also need clear rules.", "audio": "FLC-AD-U1-T13.mp3", "part": "dialog"}, {"code": "T14", "who": "Sari", "text": "[[I agree up to a point, but|U1-11]] rewards can cost money.", "audio": "FLC-AD-U1-T14.mp3", "part": "dialog"}, {"code": "T15", "who": "Rina", "text": "So, no fines. [[I disagree with|U1-17]] fines, and [[I strongly disagree with|U1-18]] laughing at students who forget. Let's make a reward plan with clear rules!", "audio": "FLC-AD-U1-T15.mp3", "part": "dialog"}], "segments": [{"n": 1, "name": "Asking for opinions and strong agreement", "ids": ["U1-01", "U1-02", "U1-03", "U1-04", "U1-05"]}, {"n": 2, "name": "Agreeing and giving reasons", "ids": ["U1-06", "U1-07", "U1-08", "U1-09"]}, {"n": 3, "name": "Partly agreeing", "ids": ["U1-10", "U1-11", "U1-12", "U1-13"]}, {"n": 4, "name": "Disagreeing", "ids": ["U1-14", "U1-15", "U1-16", "U1-17", "U1-18"]}], "cards": {"U1-01": {"id_mean": "Bagaimana pendapatmu tentang …?", "id": "U1-01", "unit": 1, "seg": 1, "type": "expr", "term": "What do you think about …?", "label": "Asking for an opinion", "group": "ask", "meaning": "A question to ask what someone thinks.", "example": "What do you think about a \"Bring Your Own Bottle\" day for our class project?", "note": "Use it to ask someone's opinion before you give yours.", "img": "", "audio": "FLC-AD-U1-01.mp3", "say": "What do you think about this?"}, "U1-02": {"id_mean": "Apakah kamu setuju dengan …?", "id": "U1-02", "unit": 1, "seg": 1, "type": "expr", "term": "Do you agree with …?", "label": "Asking if someone agrees", "group": "ask", "meaning": "A question to ask if someone has the same opinion.", "example": "Do you agree with doing it every Friday?", "note": "", "img": "", "audio": "FLC-AD-U1-02.mp3", "say": "Do you agree with this?"}, "U1-03": {"id_mean": "Saya sangat setuju dengan …", "id": "U1-03", "unit": 1, "seg": 1, "type": "expr", "term": "I strongly agree with …", "label": "Strong agreement", "group": "agree", "meaning": "You agree very much.", "example": "I strongly agree with it.", "note": "Stronger than \"I agree\". People usually add a reason.", "img": "", "audio": "FLC-AD-U1-03.mp3", "say": "I strongly agree with that."}, "U1-04": {"id_mean": "Saya sangat setuju.", "id": "U1-04", "unit": 1, "seg": 1, "type": "expr", "term": "I totally agree.", "label": "Strong agreement", "group": "agree", "meaning": "You agree 100 percent.", "example": "I totally agree. The reason is simple: tumblers are cheap and easy to wash.", "note": "Use it alone, without \"with\".", "img": "", "audio": "FLC-AD-U1-04.mp3", "say": "I totally agree."}, "U1-05": {"id_mean": "Tentu saja.", "id": "U1-05", "unit": 1, "seg": 1, "type": "expr", "term": "Absolutely.", "label": "Strong agreement", "group": "agree", "meaning": "A short way to say \"Yes, I agree very much.\"", "example": "Absolutely. We have sports on Friday, so everyone needs water.", "note": "A one-word answer that sounds very sure.", "img": "", "audio": "FLC-AD-U1-05.mp3", "say": "Absolutely."}, "U1-06": {"id_mean": "Saya setuju denganmu / dengan idemu", "id": "U1-06", "unit": 1, "seg": 2, "type": "expr", "term": "I agree with you / your idea", "label": "Agreement", "group": "agree", "meaning": "You have the same opinion as the speaker.", "example": "That's a good point. I agree with your idea.", "note": "", "img": "", "audio": "FLC-AD-U1-06.mp3", "say": "I agree with your idea."}, "U1-07": {"id_mean": "Itu pendapat yang bagus.", "id": "U1-07", "unit": 1, "seg": 2, "type": "expr", "term": "That's a good point.", "label": "Agreement", "group": "agree", "meaning": "You think the other person said something smart.", "example": "That's a good point. I agree with your idea.", "note": "\"Point\" here means an idea, not a score.", "img": "", "audio": "FLC-AD-U1-07.mp3", "say": "That's a good point."}, "U1-08": {"id_mean": "Saya juga berpikir begitu.", "id": "U1-08", "unit": 1, "seg": 2, "type": "expr", "term": "I think so too.", "label": "Agreement", "group": "agree", "meaning": "You have the same opinion.", "example": "I think so too. And what about a fine for students who bring plastic bottles?", "note": "", "img": "", "audio": "FLC-AD-U1-08.mp3", "say": "I think so too."}, "U1-09": {"id_mean": "karena … / Alasannya adalah …", "id": "U1-09", "unit": 1, "seg": 2, "type": "expr", "term": "because … / The reason is …", "label": "Giving a reason", "group": "reason", "meaning": "Words to explain why you have an opinion.", "example": "I totally agree. The reason is simple: tumblers are cheap and easy to wash.", "note": "An opinion is stronger when you give a reason.", "img": "", "audio": "FLC-AD-U1-09.mp3", "say": "because... The reason is..."}, "U1-10": {"id_mean": "Saya setuju sebagian / tidak setuju sebagian dengan …", "id": "U1-10", "unit": 1, "seg": 3, "type": "expr", "term": "I partly agree / partly disagree with …", "label": "Partial agreement", "group": "partial", "meaning": "You agree with some parts, but not all.", "example": "I partly agree with Dimas. A reward is good, but we also need clear rules.", "note": "\"Partly\" means \"in some parts\". People often add \"but\".", "img": "", "audio": "FLC-AD-U1-10.mp3", "say": "I partly agree with that. I partly disagree with that."}, "U1-11": {"id_mean": "Saya setuju sampai batas tertentu, tetapi …", "id": "U1-11", "unit": 1, "seg": 3, "type": "expr", "term": "I agree up to a point, but …", "label": "Partial agreement", "group": "partial", "meaning": "You agree, but only with some parts.", "example": "I agree up to a point, but rewards can cost money.", "note": "\"Point\" here means a limit, not a score.", "img": "", "audio": "FLC-AD-U1-11.mp3", "say": "I agree up to a point, but..."}, "U1-12": {"id_mean": "Itu benar, tetapi …", "id": "U1-12", "unit": 1, "seg": 3, "type": "expr", "term": "That's true, but …", "label": "Partial agreement", "group": "partial", "meaning": "You accept the idea, then add a different idea.", "example": "That's true, but we can put a reminder in the class group on Thursday.", "note": "", "img": "", "audio": "FLC-AD-U1-12.mp3", "say": "That's true, but..."}, "U1-13": {"id_mean": "Saya mengerti maksudmu, tetapi …", "id": "U1-13", "unit": 1, "seg": 3, "type": "expr", "term": "I see your point, but …", "label": "Polite disagreement", "group": "dis", "meaning": "You understand the idea, but you think differently.", "example": "I see your point, but a small fine can help people remember.", "note": "\"See\" here means \"understand\", not \"look\".", "img": "", "audio": "FLC-AD-U1-13.mp3", "say": "I see your point, but..."}, "U1-14": {"id_mean": "Saya tidak yakin tentang itu.", "id": "U1-14", "unit": 1, "seg": 4, "type": "expr", "term": "I'm not sure about that.", "label": "Doubt", "group": "dis", "meaning": "You are not ready to agree.", "example": "I'm not sure about that. Some students forget their tumblers after sports.", "note": "A soft way to say you are not ready to agree.", "img": "", "audio": "FLC-AD-U1-14.mp3", "say": "I'm not sure about that."}, "U1-15": {"id_mean": "Maaf, saya tidak setuju.", "id": "U1-15", "unit": 1, "seg": 4, "type": "expr", "term": "I'm afraid I disagree.", "label": "Polite disagreement", "group": "dis", "meaning": "A polite way to say you do not agree.", "example": "I'm afraid I disagree. A fine can make students feel bad.", "note": "\"I'm afraid\" here means \"sorry\", not \"scared\".", "img": "", "audio": "FLC-AD-U1-15.mp3", "say": "I'm afraid I disagree."}, "U1-16": {"id_mean": "Saya rasa tidak.", "id": "U1-16", "unit": 1, "seg": 4, "type": "expr", "term": "I don't think so.", "label": "Disagreement", "group": "dis", "meaning": "You do not agree.", "example": "I don't think so. A reward is better, because rewards make students happy.", "note": "", "img": "", "audio": "FLC-AD-U1-16.mp3", "say": "I don't think so."}, "U1-17": {"id_mean": "Saya tidak setuju dengan …", "id": "U1-17", "unit": 1, "seg": 4, "type": "expr", "term": "I disagree with …", "label": "Disagreement", "group": "dis", "meaning": "You do not have the same opinion.", "example": "So, no fines. I disagree with fines", "note": "", "img": "", "audio": "FLC-AD-U1-17.mp3", "say": "I disagree with that."}, "U1-18": {"id_mean": "Saya sangat tidak setuju dengan …", "id": "U1-18", "unit": 1, "seg": 4, "type": "expr", "term": "I strongly disagree with …", "label": "Strong disagreement", "group": "dis", "meaning": "You do not agree at all.", "example": "I strongly disagree with laughing at students who forget.", "note": "Use it for something you think is very wrong.", "img": "", "audio": "FLC-AD-U1-18.mp3", "say": "I strongly disagree with that."}}, "questions": {"1": [{"id": "U1-01-lis", "type": "choice", "kind": "Listen and choose", "card": "U1-01", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "What do you think about this?", "audio": "FLC-AD-U1-01.mp3"}, "options": ["What do you think about …?", "Absolutely.", "I strongly agree with …"], "answer": "What do you think about …?", "hint": "Listen again and look at the first word of each option.", "why": "What do you think about …?: A question to ask what someone thinks. Use it to ask someone's opinion before you give yours."}, {"id": "U1-03-lis", "type": "choice", "kind": "Listen and choose", "card": "U1-03", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "I strongly agree with that.", "audio": "FLC-AD-U1-03.mp3"}, "options": ["I strongly agree with …", "Do you agree with …?", "I totally agree."], "answer": "I strongly agree with …", "hint": "Listen again and look at the first word of each option.", "why": "I strongly agree with …: You agree very much. Stronger than \"I agree\". People usually add a reason."}, {"id": "U1-S1-match0", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["What do you think about …?", "A question to ask what someone thinks."], ["Do you agree with …?", "A question to ask if someone has the same opinion."], ["I strongly agree with …", "You agree very much."], ["I totally agree.", "You agree 100 percent."], ["Absolutely.", "A short way to say \"Yes, I agree very much.\""]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U1-01-gap", "type": "choice", "kind": "Complete the text", "card": "U1-01", "prompt": "Choose the best words for the gap.", "ctx": null, "line": {"who": "Rina", "text": "_____ a \"Bring Your Own Bottle\" day for our class project?"}, "options": ["What do you think about", "I strongly agree with", "I disagree with"], "answer": "What do you think about", "hint": "Look at the end of the sentence. Is the speaker asking a question?", "why": "\"What do you think about\" fits here. Meaning: A question to ask what someone thinks."}, {"id": "U1-02-gap", "type": "choice", "kind": "Complete the text", "card": "U1-02", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Sari", "text": "I totally agree. The reason is simple: tumblers are cheap and easy to wash."}, "line": {"who": "Rina", "text": "Great. _____ doing it every Friday?"}, "options": ["Do you agree with", "I strongly agree with", "I disagree with"], "answer": "Do you agree with", "hint": "Look at the end of the sentence. Is the speaker asking a question?", "why": "\"Do you agree with\" fits here. Meaning: A question to ask if someone has the same opinion."}, {"id": "U1-03-gap", "type": "choice", "kind": "Complete the text", "card": "U1-03", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Rina", "text": "What do you think about a \"Bring Your Own Bottle\" day for our class project?"}, "line": {"who": "Dimas", "text": "_____ it. Our class buys a lot of plastic bottles every day."}, "options": ["I strongly agree with", "What do you think about", "Do you agree with"], "answer": "I strongly agree with", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I strongly agree with\" fits here. Meaning: You agree very much."}, {"id": "U1-04-gap", "type": "choice", "kind": "Complete the text", "card": "U1-04", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Dimas", "text": "I strongly agree with it. Our class buys a lot of plastic bottles every day."}, "line": {"who": "Sari", "text": "_____ The reason is simple: tumblers are cheap and easy to wash."}, "options": ["I totally agree.", "I'm afraid I disagree.", "I don't think so."], "answer": "I totally agree.", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I totally agree.\" fits here. Meaning: You agree 100 percent."}, {"id": "U1-05-gap", "type": "choice", "kind": "Complete the text", "card": "U1-05", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Rina", "text": "Great. Do you agree with doing it every Friday?"}, "line": {"who": "Dimas", "text": "_____ We have sports on Friday, so everyone needs water."}, "options": ["Absolutely.", "I don't think so.", "I'm afraid I disagree."], "answer": "Absolutely.", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"Absolutely.\" fits here. Meaning: A short way to say \"Yes, I agree very much.\""}, {"id": "U1-02-fn", "type": "choice", "kind": "What does it do?", "card": "U1-02", "prompt": "What does <em>Do you agree with …?<\/em> do?", "options": ["Asking if someone agrees", "Partial agreement", "Giving a reason"], "answer": "Asking if someone agrees", "hint": "Is the speaker asking, agreeing, partly agreeing, or disagreeing?", "why": "Do you agree with …?: A question to ask if someone has the same opinion."}, {"id": "U1-05-fn", "type": "choice", "kind": "What does it do?", "card": "U1-05", "prompt": "What does <em>Absolutely.<\/em> do?", "options": ["Strong agreement", "Strong disagreement", "Polite disagreement"], "answer": "Strong agreement", "hint": "Is the speaker asking, agreeing, partly agreeing, or disagreeing?", "why": "Absolutely.: A short way to say \"Yes, I agree very much.\" A one-word answer that sounds very sure."}], "2": [{"id": "U1-06-lis", "type": "choice", "kind": "Listen and choose", "card": "U1-06", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "I agree with your idea.", "audio": "FLC-AD-U1-06.mp3"}, "options": ["I agree with you / your idea", "I think so too.", "because … / The reason is …"], "answer": "I agree with you / your idea", "hint": "Listen again and look at the first word of each option.", "why": "I agree with you / your idea: You have the same opinion as the speaker."}, {"id": "U1-08-lis", "type": "choice", "kind": "Listen and choose", "card": "U1-08", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "I think so too.", "audio": "FLC-AD-U1-08.mp3"}, "options": ["I think so too.", "That's a good point.", "because … / The reason is …"], "answer": "I think so too.", "hint": "Listen again and look at the first word of each option.", "why": "I think so too.: You have the same opinion."}, {"id": "U1-S2-match0", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["I agree with you / your idea", "You have the same opinion as the speaker."], ["That's a good point.", "You think the other person said something smart."], ["I think so too.", "You have the same opinion."], ["because … / The reason is …", "Words to explain why you have an opinion."]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U1-06-gap", "type": "choice", "kind": "Complete the text", "card": "U1-06", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Dimas", "text": "That's true, but we can put a reminder in the class group on Thursday."}, "line": {"who": "Sari", "text": "That's a good point. _____"}, "options": ["I agree with your idea.", "I disagree with your idea.", "I'm not sure about that."], "answer": "I agree with your idea.", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I agree with your idea.\" fits here. Meaning: You have the same opinion as the speaker."}, {"id": "U1-07-gap", "type": "choice", "kind": "Complete the text", "card": "U1-07", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Dimas", "text": "That's true, but we can put a reminder in the class group on Thursday."}, "line": {"who": "Sari", "text": "_____ I agree with your idea."}, "options": ["That's a good point.", "I'm afraid I disagree.", "I don't think so."], "answer": "That's a good point.", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"That's a good point.\" fits here. Meaning: You think the other person said something smart."}, {"id": "U1-08-gap", "type": "choice", "kind": "Complete the text", "card": "U1-08", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Sari", "text": "That's a good point. I agree with your idea."}, "line": {"who": "Rina", "text": "_____ And what about a fine for students who bring plastic bottles?"}, "options": ["I think so too.", "I'm afraid I disagree.", "I don't think so."], "answer": "I think so too.", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I think so too.\" fits here. Meaning: You have the same opinion."}, {"id": "U1-09-gap", "type": "choice", "kind": "Complete the text", "card": "U1-09", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Sari", "text": "I see your point, but a small fine can help people remember."}, "line": {"who": "Dimas", "text": "I don't think so. A reward is better, _____ rewards make students happy."}, "options": ["because", "but", "so"], "answer": "because", "hint": "Which word starts a reason?", "why": "\"because\" fits here. Meaning: Words to explain why you have an opinion."}, {"id": "U1-07-fn", "type": "choice", "kind": "What does it do?", "card": "U1-07", "prompt": "What does <em>That's a good point.<\/em> do?", "options": ["Agreement", "Polite disagreement", "Giving a reason"], "answer": "Agreement", "hint": "Is the speaker asking, agreeing, partly agreeing, or disagreeing?", "why": "That's a good point.: You think the other person said something smart. \"Point\" here means an idea, not a score."}, {"id": "U1-09-fn", "type": "choice", "kind": "What does it do?", "card": "U1-09", "prompt": "What does <em>because … / The reason is …<\/em> do?", "options": ["Giving a reason", "Agreement", "Polite disagreement"], "answer": "Giving a reason", "hint": "Is the speaker asking, agreeing, partly agreeing, or disagreeing?", "why": "because … / The reason is …: Words to explain why you have an opinion. An opinion is stronger when you give a reason."}], "3": [{"id": "U1-10-lis", "type": "choice", "kind": "Listen and choose", "card": "U1-10", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "I partly agree with that. I partly disagree with that.", "audio": "FLC-AD-U1-10.mp3"}, "options": ["I partly agree / partly disagree with …", "I see your point, but …", "I agree up to a point, but …"], "answer": "I partly agree / partly disagree with …", "hint": "Listen again and look at the first word of each option.", "why": "I partly agree / partly disagree with …: You agree with some parts, but not all. \"Partly\" means \"in some parts\". People often add \"but\"."}, {"id": "U1-12-lis", "type": "choice", "kind": "Listen and choose", "card": "U1-12", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "That's true, but...", "audio": "FLC-AD-U1-12.mp3"}, "options": ["That's true, but …", "I agree up to a point, but …", "I partly agree / partly disagree with …"], "answer": "That's true, but …", "hint": "Listen again and look at the first word of each option.", "why": "That's true, but …: You accept the idea, then add a different idea."}, {"id": "U1-S3-match0", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["I partly agree / partly disagree with …", "You agree with some parts, but not all."], ["I agree up to a point, but …", "You agree, but only with some parts."], ["That's true, but …", "You accept the idea, then add a different idea."], ["I see your point, but …", "You understand the idea, but you think differently."]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U1-10-gap", "type": "choice", "kind": "Complete the text", "card": "U1-10", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Dimas", "text": "I don't think so. A reward is better, because rewards make students happy."}, "line": {"who": "Rina", "text": "_____ Dimas. A reward is good, but we also need clear rules."}, "options": ["I partly agree with", "I strongly agree with", "I strongly disagree with"], "answer": "I partly agree with", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I partly agree with\" fits here. Meaning: You agree with some parts, but not all."}, {"id": "U1-11-gap", "type": "choice", "kind": "Complete the text", "card": "U1-11", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Rina", "text": "I partly agree with Dimas. A reward is good, but we also need clear rules."}, "line": {"who": "Sari", "text": "_____ rewards can cost money."}, "options": ["I agree up to a point, but", "I think so too, because", "Absolutely, because"], "answer": "I agree up to a point, but", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I agree up to a point, but\" fits here. Meaning: You agree, but only with some parts."}, {"id": "U1-12-gap", "type": "choice", "kind": "Complete the text", "card": "U1-12", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Sari", "text": "I'm not sure about that. Some students forget their tumblers after sports."}, "line": {"who": "Dimas", "text": "_____ we can put a reminder in the class group on Thursday."}, "options": ["That's true, but", "I strongly disagree with", "Do you agree with"], "answer": "That's true, but", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"That's true, but\" fits here. Meaning: You accept the idea, then add a different idea."}, {"id": "U1-13-gap", "type": "choice", "kind": "Complete the text", "card": "U1-13", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Dimas", "text": "I'm afraid I disagree. A fine can make students feel bad."}, "line": {"who": "Sari", "text": "_____ a small fine can help people remember."}, "options": ["I see your point, but", "I think so too, because", "Absolutely, because"], "answer": "I see your point, but", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I see your point, but\" fits here. Meaning: You understand the idea, but you think differently."}, {"id": "U1-11-fn", "type": "choice", "kind": "What does it do?", "card": "U1-11", "prompt": "What does <em>I agree up to a point, but …<\/em> do?", "options": ["Partial agreement", "Strong disagreement", "Strong agreement"], "answer": "Partial agreement", "hint": "Is the speaker asking, agreeing, partly agreeing, or disagreeing?", "why": "I agree up to a point, but …: You agree, but only with some parts. \"Point\" here means a limit, not a score."}, {"id": "U1-13-fn", "type": "choice", "kind": "What does it do?", "card": "U1-13", "prompt": "What does <em>I see your point, but …<\/em> do?", "options": ["Polite disagreement", "Partial agreement", "Asking for an opinion"], "answer": "Polite disagreement", "hint": "Is the speaker asking, agreeing, partly agreeing, or disagreeing?", "why": "I see your point, but …: You understand the idea, but you think differently. \"See\" here means \"understand\", not \"look\"."}], "4": [{"id": "U1-14-lis", "type": "choice", "kind": "Listen and choose", "card": "U1-14", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "I'm not sure about that.", "audio": "FLC-AD-U1-14.mp3"}, "options": ["I'm not sure about that.", "I strongly disagree with …", "I'm afraid I disagree."], "answer": "I'm not sure about that.", "hint": "Listen again and look at the first word of each option.", "why": "I'm not sure about that.: You are not ready to agree. A soft way to say you are not ready to agree."}, {"id": "U1-16-lis", "type": "choice", "kind": "Listen and choose", "card": "U1-16", "prompt": "Press Listen. Then choose what you hear.", "listen": {"text": "I don't think so.", "audio": "FLC-AD-U1-16.mp3"}, "options": ["I don't think so.", "I strongly disagree with …", "I'm afraid I disagree."], "answer": "I don't think so.", "hint": "Listen again and look at the first word of each option.", "why": "I don't think so.: You do not agree."}, {"id": "U1-S4-match0", "type": "match", "kind": "Match the meaning", "card": null, "prompt": "Tap a word or expression, then tap its meaning.", "pairs": [["I'm not sure about that.", "You are not ready to agree."], ["I'm afraid I disagree.", "A polite way to say you do not agree."], ["I don't think so.", "You do not agree."], ["I disagree with …", "You do not have the same opinion."], ["I strongly disagree with …", "You do not agree at all."]], "why": "Good. You can now check how each one is used in the text."}, {"id": "U1-14-gap", "type": "choice", "kind": "Complete the text", "card": "U1-14", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Dimas", "text": "Absolutely. We have sports on Friday, so everyone needs water."}, "line": {"who": "Sari", "text": "_____ Some students forget their tumblers after sports."}, "options": ["I'm not sure about that.", "Absolutely.", "I totally agree."], "answer": "I'm not sure about that.", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I'm not sure about that.\" fits here. Meaning: You are not ready to agree."}, {"id": "U1-15-gap", "type": "choice", "kind": "Complete the text", "card": "U1-15", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Rina", "text": "I think so too. And what about a fine for students who bring plastic bottles?"}, "line": {"who": "Dimas", "text": "_____ A fine can make students feel bad."}, "options": ["I'm afraid I disagree.", "Absolutely.", "I think so too."], "answer": "I'm afraid I disagree.", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I'm afraid I disagree.\" fits here. Meaning: A polite way to say you do not agree."}, {"id": "U1-16-gap", "type": "choice", "kind": "Complete the text", "card": "U1-16", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Sari", "text": "I see your point, but a small fine can help people remember."}, "line": {"who": "Dimas", "text": "_____ A reward is better, because rewards make students happy."}, "options": ["I don't think so.", "That's a good point.", "I totally agree."], "answer": "I don't think so.", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I don't think so.\" fits here. Meaning: You do not agree."}, {"id": "U1-17-gap", "type": "choice", "kind": "Complete the text", "card": "U1-17", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Sari", "text": "I agree up to a point, but rewards can cost money."}, "line": {"who": "Rina", "text": "So, no fines. _____ fines, and I strongly disagree with laughing at students who forget. Let's make a reward plan with clear rules!"}, "options": ["I disagree with", "I agree with", "Do you agree with"], "answer": "I disagree with", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I disagree with\" fits here. Meaning: You do not have the same opinion."}, {"id": "U1-18-gap", "type": "choice", "kind": "Complete the text", "card": "U1-18", "prompt": "Choose the best words for the gap.", "ctx": {"who": "Sari", "text": "I agree up to a point, but rewards can cost money."}, "line": {"who": "Rina", "text": "So, no fines. I disagree with fines, and _____ laughing at students who forget. Let's make a reward plan with clear rules!"}, "options": ["I strongly disagree with", "I strongly agree with", "What do you think about"], "answer": "I strongly disagree with", "hint": "Read the line before and the words after the gap. Does the speaker agree, partly agree, or disagree?", "why": "\"I strongly disagree with\" fits here. Meaning: You do not agree at all."}, {"id": "U1-15-fn", "type": "choice", "kind": "What does it do?", "card": "U1-15", "prompt": "What does <em>I'm afraid I disagree.<\/em> do?", "options": ["Polite disagreement", "Asking for an opinion", "Asking if someone agrees"], "answer": "Polite disagreement", "hint": "Is the speaker asking, agreeing, partly agreeing, or disagreeing?", "why": "I'm afraid I disagree.: A polite way to say you do not agree. \"I'm afraid\" here means \"sorry\", not \"scared\"."}, {"id": "U1-18-fn", "type": "choice", "kind": "What does it do?", "card": "U1-18", "prompt": "What does <em>I strongly disagree with …<\/em> do?", "options": ["Strong disagreement", "Partial agreement", "Asking if someone agrees"], "answer": "Strong disagreement", "hint": "Is the speaker asking, agreeing, partly agreeing, or disagreeing?", "why": "I strongly disagree with …: You do not agree at all. Use it for something you think is very wrong."}]}, "review": [{"id": "U1-01-rev", "type": "choice", "kind": "Remember it", "card": "U1-01", "prompt": "Which one means: <em>A question to ask what someone thinks.<\/em>", "options": ["What do you think about …?", "That's true, but …", "I agree up to a point, but …"], "answer": "What do you think about …?", "hint": "Try to remember the text. ", "why": "What do you think about …?: A question to ask what someone thinks. Use it to ask someone's opinion before you give yours."}, {"id": "U1-02-rev", "type": "choice", "kind": "Remember it", "card": "U1-02", "prompt": "Which one means: <em>A question to ask if someone has the same opinion.<\/em>", "options": ["Do you agree with …?", "I agree up to a point, but …", "That's true, but …"], "answer": "Do you agree with …?", "hint": "Try to remember the text. ", "why": "Do you agree with …?: A question to ask if someone has the same opinion."}, {"id": "U1-03-rev", "type": "choice", "kind": "Remember it", "card": "U1-03", "prompt": "Which one means: <em>You agree very much.<\/em>", "options": ["I strongly agree with …", "I see your point, but …", "because … / The reason is …"], "answer": "I strongly agree with …", "hint": "Try to remember the text. ", "why": "I strongly agree with …: You agree very much. Stronger than \"I agree\". People usually add a reason."}, {"id": "U1-04-rev", "type": "choice", "kind": "Remember it", "card": "U1-04", "prompt": "Which one means: <em>You agree 100 percent.<\/em>", "options": ["I totally agree.", "I strongly disagree with …", "I disagree with …"], "answer": "I totally agree.", "hint": "Try to remember the text. ", "why": "I totally agree.: You agree 100 percent. Use it alone, without \"with\"."}, {"id": "U1-05-rev", "type": "choice", "kind": "Remember it", "card": "U1-05", "prompt": "Which one means: <em>A short way to say \"Yes, I agree very much.\"<\/em>", "options": ["Absolutely.", "Do you agree with …?", "I'm not sure about that."], "answer": "Absolutely.", "hint": "Try to remember the text. ", "why": "Absolutely.: A short way to say \"Yes, I agree very much.\" A one-word answer that sounds very sure."}, {"id": "U1-06-rev", "type": "choice", "kind": "Remember it", "card": "U1-06", "prompt": "Which one means: <em>You have the same opinion as the speaker.<\/em>", "options": ["I agree with you / your idea", "I see your point, but …", "I don't think so."], "answer": "I agree with you / your idea", "hint": "Try to remember the text. ", "why": "I agree with you / your idea: You have the same opinion as the speaker."}, {"id": "U1-07-rev", "type": "choice", "kind": "Remember it", "card": "U1-07", "prompt": "Which one means: <em>You think the other person said something smart.<\/em>", "options": ["That's a good point.", "I partly agree / partly disagree with …", "I strongly disagree with …"], "answer": "That's a good point.", "hint": "Try to remember the text. ", "why": "That's a good point.: You think the other person said something smart. \"Point\" here means an idea, not a score."}, {"id": "U1-08-rev", "type": "choice", "kind": "Remember it", "card": "U1-08", "prompt": "Which one means: <em>You have the same opinion.<\/em>", "options": ["I think so too.", "I agree up to a point, but …", "Do you agree with …?"], "answer": "I think so too.", "hint": "Try to remember the text. ", "why": "I think so too.: You have the same opinion."}, {"id": "U1-09-rev", "type": "choice", "kind": "Remember it", "card": "U1-09", "prompt": "Which one means: <em>Words to explain why you have an opinion.<\/em>", "options": ["because … / The reason is …", "I see your point, but …", "I'm afraid I disagree."], "answer": "because … / The reason is …", "hint": "Try to remember the text. ", "why": "because … / The reason is …: Words to explain why you have an opinion. An opinion is stronger when you give a reason."}, {"id": "U1-10-rev", "type": "choice", "kind": "Remember it", "card": "U1-10", "prompt": "Which one means: <em>You agree with some parts, but not all.<\/em>", "options": ["I partly agree / partly disagree with …", "I think so too.", "I strongly disagree with …"], "answer": "I partly agree / partly disagree with …", "hint": "Try to remember the text. ", "why": "I partly agree / partly disagree with …: You agree with some parts, but not all. \"Partly\" means \"in some parts\". People often add \"but\"."}, {"id": "U1-11-rev", "type": "choice", "kind": "Remember it", "card": "U1-11", "prompt": "Which one means: <em>You agree, but only with some parts.<\/em>", "options": ["I agree up to a point, but …", "I'm afraid I disagree.", "What do you think about …?"], "answer": "I agree up to a point, but …", "hint": "Try to remember the text. ", "why": "I agree up to a point, but …: You agree, but only with some parts. \"Point\" here means a limit, not a score."}, {"id": "U1-12-rev", "type": "choice", "kind": "Remember it", "card": "U1-12", "prompt": "Which one means: <em>You accept the idea, then add a different idea.<\/em>", "options": ["That's true, but …", "I strongly disagree with …", "Do you agree with …?"], "answer": "That's true, but …", "hint": "Try to remember the text. ", "why": "That's true, but …: You accept the idea, then add a different idea."}, {"id": "U1-13-rev", "type": "choice", "kind": "Remember it", "card": "U1-13", "prompt": "Which one means: <em>You understand the idea, but you think differently.<\/em>", "options": ["I see your point, but …", "I strongly agree with …", "That's true, but …"], "answer": "I see your point, but …", "hint": "Try to remember the text. ", "why": "I see your point, but …: You understand the idea, but you think differently. \"See\" here means \"understand\", not \"look\"."}, {"id": "U1-14-rev", "type": "choice", "kind": "Remember it", "card": "U1-14", "prompt": "Which one means: <em>You are not ready to agree.<\/em>", "options": ["I'm not sure about that.", "I partly agree / partly disagree with …", "That's a good point."], "answer": "I'm not sure about that.", "hint": "Try to remember the text. ", "why": "I'm not sure about that.: You are not ready to agree. A soft way to say you are not ready to agree."}, {"id": "U1-15-rev", "type": "choice", "kind": "Remember it", "card": "U1-15", "prompt": "Which one means: <em>A polite way to say you do not agree.<\/em>", "options": ["I'm afraid I disagree.", "Do you agree with …?", "I agree up to a point, but …"], "answer": "I'm afraid I disagree.", "hint": "Try to remember the text. ", "why": "I'm afraid I disagree.: A polite way to say you do not agree. \"I'm afraid\" here means \"sorry\", not \"scared\"."}, {"id": "U1-16-rev", "type": "choice", "kind": "Remember it", "card": "U1-16", "prompt": "Which one means: <em>You do not agree.<\/em>", "options": ["I don't think so.", "I partly agree / partly disagree with …", "I strongly agree with …"], "answer": "I don't think so.", "hint": "Try to remember the text. ", "why": "I don't think so.: You do not agree."}, {"id": "U1-17-rev", "type": "choice", "kind": "Remember it", "card": "U1-17", "prompt": "Which one means: <em>You do not have the same opinion.<\/em>", "options": ["I disagree with …", "Absolutely.", "I agree with you / your idea"], "answer": "I disagree with …", "hint": "Try to remember the text. ", "why": "I disagree with …: You do not have the same opinion."}, {"id": "U1-18-rev", "type": "choice", "kind": "Remember it", "card": "U1-18", "prompt": "Which one means: <em>You do not agree at all.<\/em>", "options": ["I strongly disagree with …", "Absolutely.", "I agree with you / your idea"], "answer": "I strongly disagree with …", "hint": "Try to remember the text. ", "why": "I strongly disagree with …: You do not agree at all. Use it for something you think is very wrong."}], "produce": {"prompt": "Your class wants a \"No Plastic Day\" every Monday. Write two or three sentences. Give your opinion, use one expression from this unit, and give a reason.", "model": "I strongly agree with a No Plastic Day. The reason is simple: our class buys a lot of plastic. But I'm not sure about Monday, because we have a ceremony.", "check": ["I used one expression from this unit.", "I said if I agree, partly agree, or disagree.", "I gave a reason with \"because\" or \"The reason is\"."]}};
+
+/* ===================== ILLUSTRATIONS (one line style) ===================== */
+const G='#3E7A5C', M='#A9D3BA', P='#E7A3BB';
+const sv=b=>`<svg width="112" height="112" viewBox="0 0 120 120" aria-hidden="true" fill="none" stroke="${G}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">${b}</svg>`;
+const ILLU={
+ bin:sv(`<path d="M34 38h52l-5 60a6 6 0 0 1-6 5.5H45a6 6 0 0 1-6-5.5z" fill="#fff"/><path d="M28 38h64M48 38v-7a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v7"/><path d="M50 52v38M60 52v38M70 52v38" stroke="${M}"/>`),
+ plastic:sv(`<path d="M38 40h44l-6 62a5 5 0 0 1-5 4.5H49a5 5 0 0 1-5-4.5z" fill="#fff"/><rect x="34" y="31" width="52" height="10" rx="4" fill="#fff"/><path d="M66 31 74 10h10"/><path d="M47 62h26" stroke="${M}"/>`),
+ waste:sv(`<path d="M44 44c-12 10-16 26-12 40 4 14 14 22 28 22s24-8 28-22c4-14 0-30-12-40z" fill="#fff"/><path d="M48 44h24l4-10c-6 3-10 3-16-2-6 5-10 5-16 2z" fill="#fff"/><path d="M50 70h20M47 84h26" stroke="${M}"/>`),
+ litter:sv(`<path d="M14 100h92"/><path d="M28 24c10 4 22 18 30 40" stroke="${M}" stroke-dasharray="2 8"/><path d="M58 70l12-4 6 8-8 10-12-2z" fill="#fff"/><rect x="78" y="84" width="22" height="14" rx="3" fill="#fff"/><path d="M84 84v-4h10v4"/><path d="M22 96l6-8 8 2-2 8z" fill="#fff"/>`),
+ separate:sv(`<path d="M14 46h28l-3 50H17z" fill="#fff"/><path d="M46 46h28l-3 50H49z" fill="#fff"/><path d="M78 46h28l-3 50H81z" fill="#fff"/><path d="M12 46h32M44 46h32M76 46h32"/><circle cx="28" cy="70" r="7" stroke="${M}"/><path d="M56 64h8v14h-8z" stroke="${P}"/><path d="M88 64h12M88 71h12M88 78h8" stroke="${G}" stroke-width="2.5"/>`),
+ compost:sv(`<path d="M16 96c8-22 24-32 44-32s36 10 44 32z" fill="#fff"/><path d="M14 96h92"/><path d="M60 64V40"/><path d="M60 48c-14 0-20-8-20-18 12 0 20 6 20 18zM60 44c12 0 18-8 18-16-10 0-18 6-18 16z" fill="${M}"/><path d="M40 84h6M58 80h8M76 86h6" stroke="${M}"/>`),
+ recycle:sv(`<path d="M60 20a40 40 0 0 1 34 19"/><path d="M96 26l-2 14-14-3"/><path d="M98 66a40 40 0 0 1-38 34"/><path d="M68 106l-10-6 8-11"/><path d="M24 78A40 40 0 0 1 30 34"/><path d="M18 42l12-8 6 12"/><circle cx="60" cy="60" r="14" stroke="${M}"/>`),
+ plant:sv(`<path d="M38 72h44l-6 34H44z" fill="#fff"/><path d="M34 72h52"/><path d="M60 72V40"/><path d="M60 52c-16 0-24-10-24-22 14 0 24 8 24 22z" fill="${M}"/><path d="M60 46c14 0 22-10 22-20-12 0-22 8-22 20z" fill="${M}"/>`),
+ switch:sv(`<rect x="34" y="14" width="52" height="92" rx="10" fill="#fff"/><rect x="48" y="34" width="24" height="52" rx="6"/><rect x="51" y="58" width="18" height="25" rx="4" fill="${M}"/><text x="60" y="27" font-size="10" font-family="Inter,Arial" font-weight="700" fill="${G}" stroke="none" text-anchor="middle">ON</text><text x="60" y="100" font-size="10" font-family="Inter,Arial" font-weight="700" fill="${G}" stroke="none" text-anchor="middle">OFF</text>`),
+ pollution:sv(`<path d="M14 104h92"/><path d="M20 104V64l20 12V64l20 12V64l20 12V40h14v64" fill="#fff"/><path d="M84 40V26M92 40V26"/><path d="M80 22c-4-8 4-14 10-10 2-8 14-8 16 0 8 0 8 10 2 12" stroke="${P}"/><path d="M30 88h8M50 88h8M70 88h8" stroke="${M}"/>`)
+};
+const ICON={
+ spk:`<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/><path d="M15 9a4 4 0 0 1 0 6M17.5 6.5a7.5 7.5 0 0 1 0 11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>`,
+ ok:`<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#3E7A5C"/><path d="m7 12.5 3.2 3.2L17 9" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+ no:`<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#2B2A33"/><path d="M8.5 8.5l7 7m0-7-7 7" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>`
+};
+
+/* ===================== AUDIO (learner controlled) ===================== */
+const VOICE={Narrator:[1,0.9],Rina:[1.25,0.95],Sari:[1.1,0.9],Dimas:[0.8,0.92],Andi:[0.95,0.95]};
+let current=null;
+function stopAudio(){ if(current&&current.pause) current.pause(); if(window.speechSynthesis) speechSynthesis.cancel(); current=null; document.querySelectorAll('.on[data-audio]').forEach(b=>b.classList.remove('on')); }
+function speak(text,file,btn,who,onEnd){
+  stopAudio(); let ended=false;
+  const done=()=>{ if(ended) return; ended=true; if(btn) btn.classList.remove('on'); if(onEnd) onEnd(); };
+  if(btn) btn.classList.add('on');
+  if(AUDIO_BASE&&file){ let fb=false; const fallback=()=>{ if(fb) return; fb=true; tts(text,who,done); }; const a=new Audio(AUDIO_BASE+file); current=a; a.onended=done; a.onerror=fallback; a.play().catch(fallback); return; }
+  tts(text,who,done);
+}
+function tts(text,who,done){
+  if(!('speechSynthesis' in window)){ done(); return; }
+  const u=new SpeechSynthesisUtterance(String(text).replace(/…|\.\.\./g,',').replace(/\[\[|\]\]/g,''));
+  u.lang='en-US'; const v=VOICE[who]||[1,0.9]; u.pitch=v[0]; u.rate=v[1];
+  const vo=speechSynthesis.getVoices().find(x=>/^en(-|_)(US|GB)/i.test(x.lang)); if(vo) u.voice=vo;
+  u.onend=done; u.onerror=done; speechSynthesis.speak(u);
+}
+
+/* ===================== STATE (saved on this device) ===================== */
+const KEY='floca-u'+DATA.unit;
+const S={gloss:{},view:'home',seg:1,card:0,q:0,ret:null,att:{},firstTry:{},firstMiss:{},sel:null,matched:{},shuffle:{},set:'seg',revList:null,
+  saved:{segs:{},review:null,missed:[],produce:''}};
+try{ const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s) S.saved=Object.assign(S.saved,s); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY,JSON.stringify(S.saved)); }catch(e){} }
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mark=s=>esc(s).replace(/\[\[(.+?)\|(.+?)\]\]/g,'<button class="t" data-term="$2">$1</button>').replace(/\[\[(.+?)\]\]/g,'<span class="t">$1</span>');
+const shuffled=(key,arr)=>{ if(!S.shuffle[key]){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} S.shuffle[key]=a; } return S.shuffle[key]; };
+const C=id=>DATA.cards[id];
+const SEG=n=>DATA.segments.find(s=>s.n===n);
+const qList=()=> S.set==='review' ? S.revList : DATA.questions[S.seg];
+
+function topBar(back){
+  return `<div class="top"><div class="brand">Floca <span>· Agree &amp; Disagree</span></div>${back?`<button class="back" id="home">← Unit ${DATA.unit} menu</button>`:''}</div>`;
+}
+function steps(i){
+  const names=['Read','Words','Practice','Review'];
+  return `<div class="unit-lab">Unit ${DATA.unit}</div><h1>${esc(DATA.title)}</h1>
+  <ol class="steps" aria-label="Unit steps">${names.map((n,k)=>`<li class="${k<i?'done':k===i?'on':''}" ${k===i?'aria-current="step"':''}><i></i>${n}</li>`).join('')}</ol>`;
+}
+const voiceNote=()=>AUDIO_BASE?'':`<div class="note">Practice voice: your device reads the words for now. Recorded audio will replace it.</div>`;
+
+/* ===================== VIEWS ===================== */
+function render(){
+  stopAudio();
+  const v=S.view, app=$('#app');
+  app.innerHTML = v==='home'?vHome(): v==='text'?vText(): v==='cards'?vCards(): v==='practice'?vPractice():
+    v==='card'?vOneCard(): v==='segdone'?vSegDone(): v==='produce'?vProduce(): vRevDone();
+  bind(); window.scrollTo(0,0);
+}
+function vHome(){
+  const sg=S.saved.segs, nSeg=DATA.segments.length, segDone=DATA.segments.filter(s=>sg[s.n]).length;
+  const items=[`<li><button class="item ${S.saved.read?'done':''}" data-open="text"><span class="n">1</span><span><b>Read and listen</b><small>${DATA.kind==='poster'?'The poster and the comments':'The conversation'}</small></span>${S.saved.read?'<span class="st">Done</span>':''}</button></li>`];
+  DATA.segments.forEach((s,k)=>{ const r=sg[s.n];
+    items.push(`<li><button class="item ${r?'done':''}" data-seg="${s.n}"><span class="n">${k+2}</span><span><b>Part ${s.n}: ${esc(s.name)}</b><small>${s.ids.length} words and expressions · cards and practice</small></span>${r?`<span class="st">${r.first}/${r.total}</span>`:''}</button></li>`); });
+  const rv=S.saved.review;
+  items.push(`<li><button class="item ${rv?'done':''}" data-open="review"><span class="n">${nSeg+2}</span><span><b>Unit review</b><small>Mixed practice${DATA.unit>1?' with words from earlier units':''}</small></span>${rv?`<span class="st">${rv.first}/${rv.total}</span>`:''}</button></li>`);
+  items.push(`<li><button class="item ${S.saved.produce?'done':''}" data-open="produce"><span class="n">${nSeg+3}</span><span><b>Your turn</b><small>Write your own opinion</small></span>${S.saved.produce?'<span class="st">Done</span>':''}</button></li>`);
+  return topBar(false)+`<div class="unit-lab">Unit ${DATA.unit}</div><h1>${esc(DATA.title)}</h1>
+   <p class="muted small" style="margin-top:6px">${segDone} of ${nSeg} parts done. Go in order, or choose any part.</p>
+   <ul class="menu">${items.join('')}</ul>${voiceNote()}`;
+}
+function lineHTML(l,i){
+  const who=l.part==='poster'?'':`<div class="who">${esc(l.who)}</div>`;
+  return `<div class="line"><button class="play" data-audio data-line="${i}" aria-label="Listen to ${esc(l.part==='poster'?'this part of the poster':l.who)}">${ICON.spk}</button><div>${who}<p lang="en">${mark(l.text)}</p></div></div>`;
+}
+function vText(){
+  let body='';
+  if(DATA.kind==='poster'){
+    const p=DATA.lines.map((l,i)=>[l,i]).filter(x=>x[0].part==='poster'), c=DATA.lines.map((l,i)=>[l,i]).filter(x=>x[0].part==='comment');
+    body=`<div class="sub">Poster</div><div class="poster">${p.map(x=>lineHTML(...x)).join('')}</div><div class="sub">Comments</div>${c.map(x=>lineHTML(...x)).join('')}`;
+  } else body=DATA.lines.map((l,i)=>lineHTML(l,i)).join('');
+  return topBar(true)+steps(0)+`<p class="sit">${esc(DATA.situation)}</p><p class="small muted">Tap a highlighted word to see its card.</p>
+   ${body}<div class="row"><button class="btn" id="playAll" data-audio>Play all</button><button class="btn pri" id="toPart1">Go to Part 1</button></div>${voiceNote()}`;
+}
+function cardHTML(c){
+  return `<article class="card" aria-label="Card: ${esc(c.term)}">
+   ${c.img&&ILLU[c.img]?`<div class="illu">${ILLU[c.img]}</div>`:''}
+   <span class="chip">${esc(c.label)}</span>
+   <div class="term" lang="en">${esc(c.term)}</div>
+   <button class="audio" data-audio data-card="${c.id}" aria-label="Listen: ${esc(c.term)}"><span class="c">${ICON.spk}</span>Listen</button>
+   <div class="lab">Meaning</div><p>${esc(c.meaning)}</p>
+   ${c.id_mean?`<button class="gloss" data-gloss="${c.id}" aria-expanded="${S.gloss[c.id]?'true':'false'}">${S.gloss[c.id]?'Hide Indonesian meaning':'Show Indonesian meaning'}</button>${S.gloss[c.id]?`<p class="glosstext" lang="id">${esc(c.id_mean)}</p>`:''}`:''}
+   <div class="lab">${c.unit===DATA.unit?'From the text':'From Unit '+c.unit}</div><div class="quote" lang="en">${esc(c.example)}</div>
+   ${c.note?`<div class="lab">Note</div><p class="small">${esc(c.note)}</p>`:''}
+  </article>`;
+}
+function segBar(label,right){
+  return `<div class="seg"><span><b>${label}</b></span><span>${right}</span></div><div class="bar" aria-hidden="true">${DATA.segments.map(s=>`<i class="${s.n<=S.seg?'on':''}"></i>`).join('')}</div>`;
+}
+function vCards(){
+  const s=SEG(S.seg), c=C(s.ids[S.card]), n=s.ids.length, last=S.card===n-1;
+  return topBar(true)+steps(1)+segBar(`Part ${s.n}: ${esc(s.name)}`,`Card ${S.card+1} of ${n}`)+cardHTML(c)+
+   `<div class="dots" aria-hidden="true">${s.ids.map((_,k)=>`<i class="${k===S.card?'on':''}"></i>`).join('')}</div>
+   <div class="row"><button class="btn" id="prevCard">${S.card===0?'Back':'Previous'}</button><button class="btn pri" id="nextCard">${last?'Start practice':'Next'}</button></div>`;
+}
+function fbHTML(ok,text){ return `<div class="fb ${ok?'':'no'}" role="status"><div class="h">${ok?ICON.ok:ICON.no}${ok?'Correct':'Not yet'}</div><p>${text}</p></div>`; }
+function vPractice(){
+  const list=qList(), q=list[S.q], n=list.length, a=S.att[q.id]||{tries:0,done:false,last:null};
+  let head='', body='';
+  if(q.listen) head+=`<div style="margin-bottom:12px"><button class="audio" data-audio data-listen="1"><span class="c">${ICON.spk}</span>Listen</button></div>`;
+  if(q.line) head+=`${q.ctx?`<div class="ctx"><b>${esc(q.ctx.who)}:</b> ${esc(q.ctx.text)}</div>`:''}<div class="gapline" lang="en"><b>${esc(q.line.who)}:</b> ${esc(q.line.text).replace('_____','<span class="t">_____</span>')}</div>`;
+  if(q.type==='choice'){
+    const opts=shuffled(q.id,q.options);
+    body=opts.map((o,k)=>{ let cls=''; if(a.done&&o===q.answer) cls='ok'; else if(a.last===o&&!a.done) cls='no';
+      return `<button class="opt ${cls}" data-opt="${esc(o)}" ${a.done||a.tries>=2?'disabled':''}><span class="k">${'ABC'[k]}</span><span lang="en">${esc(o)}</span></button>`; }).join('');
+    if(a.done) body+=fbHTML(true,esc(q.why));
+    else if(a.last) body+=fbHTML(false,a.tries>=2?`The answer is <b>${esc(q.answer)}</b>. ${esc(q.why)}`:esc(q.hint)+' Try again.');
+  } else if(q.type==='match'){
+    const left=shuffled(q.id+'L',q.pairs.map(p=>p[0])), right=shuffled(q.id+'R',q.pairs.map(p=>p[1])), m=S.matched[q.id]||{};
+    body=`<div class="match"><div>${left.map(t=>`<button class="opt ${m[t]?'done':''} ${S.sel===t?'sel':''}" data-left="${esc(t)}" ${m[t]?'disabled':''} lang="en">${esc(t)}</button>`).join('')}</div>
+     <div>${right.map(t=>{const used=Object.values(m).includes(t);return `<button class="opt ${used?'done':''}" data-right="${esc(t)}" ${used?'disabled':''} lang="en">${esc(t)}</button>`}).join('')}</div></div>`;
+    if(a.done) body+=fbHTML(true,'All pairs match. '+esc(q.why));
+    else if(a.last==='miss') body+=fbHTML(false,'That pair does not match. Read the meaning again and try another pair.');
+    else if(!S.sel) body+=`<p class="small muted">Tap a word on the left first.</p>`;
+  } else if(q.type==='input'){
+    body=`<label class="sr" for="ans">Your answer</label><input class="inp" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" lang="en" value="${esc(a.val||'')}" ${a.done||a.tries>=2?'disabled':''} placeholder="Type the word">
+     ${a.done||a.tries>=2?'':`<div class="row"><button class="btn pri" id="checkInput">Check</button></div>`}`;
+    if(a.done) body+=`<div style="height:10px"></div>`+fbHTML(true,esc(q.why));
+    else if(a.last) body+=`<div style="height:10px"></div>`+fbHTML(false,a.tries>=2?`The answer is <b>${esc(q.accept[0])}</b>. ${esc(q.why)}`:esc(q.hint)+' Try again.');
+  }
+  const canNext=a.done||a.tries>=2, lastQ=S.q===n-1;
+  const title=S.set==='review'?'Unit review':`Part ${S.seg} practice`;
+  return topBar(true)+steps(S.set==='review'?3:2)+segBar(title,`Question ${S.q+1} of ${n}`)+
+   `<div class="kind">${esc(q.kind)}</div><div class="prompt">${q.prompt}${head?`<div style="margin-top:10px">${head}</div>`:''}</div>${body}
+   <div class="row">${q.card?`<button class="btn" id="seeCard">See card</button>`:''}<button class="btn pri" id="nextQ" ${canNext?'':'disabled'}>${lastQ?'Finish':'Next question'}</button></div>`;
+}
+function vOneCard(){
+  return topBar(true)+`<div class="seg" style="margin-bottom:10px"><span><b>Card</b></span></div>`+cardHTML(C(S.cardId))+
+   `<div class="row"><button class="btn pri" id="backFromCard">Back</button></div>`;
+}
+function result(list){
+  const scored=list.filter(q=>q.type!=='produce'), first=scored.filter(q=>S.firstTry[q.id]===true).length;
+  const miss=new Set();
+  scored.forEach(q=>{
+    if(q.type==='match') (S.firstMiss[q.id]||[]).forEach(t=>{ const c=Object.values(DATA.cards).find(x=>x.term===t); if(c) miss.add(c.id); });
+    else if(S.firstTry[q.id]!==true&&q.card) miss.add(q.card); });
+  return {first,total:scored.length,miss:[...miss]};
+}
+function chips(ids){ return ids.length?`<div class="lab">Cards to look at again</div><div class="chips">${ids.map(id=>`<button data-term="${id}" lang="en">${esc(C(id).term)}</button>`).join('')}</div>`:`<p class="muted small" style="margin-top:6px">Great work. You remembered them all.</p>`; }
+function vSegDone(){
+  const r=S.lastResult, s=SEG(S.seg), next=DATA.segments.find(x=>x.n===S.seg+1);
+  return topBar(true)+steps(2)+`<h2>Part ${s.n} done</h2><p style="margin-top:6px">Correct on the first try: <b>${r.first} of ${r.total}</b></p>${chips(r.miss)}
+   <div class="row"><button class="btn" id="redo">Practice again</button><button class="btn pri" id="${next?'nextSeg':'toReview'}">${next?'Go to Part '+next.n:'Unit review'}</button></div>`;
+}
+function vRevDone(){
+  const r=S.lastResult;
+  return topBar(true)+steps(3)+`<h2>Unit review done</h2><p style="margin-top:6px">Correct on the first try: <b>${r.first} of ${r.total}</b></p>${chips(r.miss)}
+   <div class="row"><button class="btn" id="redoRev">Review again</button><button class="btn pri" data-open="produce">Your turn</button></div>`;
+}
+function vProduce(){
+  const p=DATA.produce, shown=S.showModel;
+  return topBar(true)+steps(3)+`<div class="kind">Your turn</div><div class="prompt">${esc(p.prompt)}</div>
+   <label class="sr" for="free">Your answer</label><textarea class="inp" id="free" lang="en" placeholder="Write your answer here">${esc(S.saved.produce||'')}</textarea>
+   ${shown?`<div class="model"><div class="lab" style="margin-top:0">Example answer</div><p lang="en">${esc(p.model)}</p></div>
+   <div class="lab">Check your own answer</div>${p.check.map(t=>`<label class="check"><input type="checkbox"> <span>${esc(t)}</span></label>`).join('')}
+   <div class="row"><button class="btn pri" id="home2">Back to Unit ${DATA.unit} menu</button></div>`
+   :`<div class="row"><button class="btn pri" id="showModel">Show an example answer</button></div>`}`;
+}
+
+/* ===================== ACTIONS ===================== */
+function startSeg(n){ Object.assign(S,{seg:n,card:0,view:'cards'}); render(); }
+function startPractice(set){
+  S.set=set; S.q=0; S.att={}; S.firstTry={}; S.firstMiss={}; S.matched={}; S.shuffle={}; S.sel=null;
+  if(set==='review'){ const missed=new Set(S.saved.missed); const r=DATA.review.slice();
+    for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}
+    S.revList=r.filter(q=>missed.has(q.card)).concat(r.filter(q=>!missed.has(q.card))); }
+  S.view='practice'; render();
+}
+function finish(){
+  const r=result(qList()); S.lastResult=r;
+  const missed=new Set(S.saved.missed);
+  qList().forEach(q=>{ if(q.card&&S.firstTry[q.id]===true&&S.set==='review') missed.delete(q.card); });
+  r.miss.forEach(id=>missed.add(id)); S.saved.missed=[...missed];
+  if(S.set==='review'){ S.saved.review={first:r.first,total:r.total}; S.view='revdone'; }
+  else { S.saved.segs[S.seg]={first:r.first,total:r.total}; S.view='segdone'; }
+  save(); render();
+}
+function attempt(q,ok,val){
+  const a=S.att[q.id]||{tries:0,done:false,last:null};
+  a.tries++; a.last=val; if(val!==undefined) a.val=val;
+  if(S.firstTry[q.id]===undefined) S.firstTry[q.id]=ok;
+  if(ok) a.done=true; S.att[q.id]=a;
+}
+function openCard(id,from){ S.cardId=id; S.ret=from; S.view='card'; render(); }
+function bind(){
+  const on=(sel,fn)=>{ const e=$(sel); if(e) e.onclick=fn; };
+  on('#home',()=>{S.view='home';render();}); on('#home2',()=>{S.saved.produce=$('#free').value;save();S.view='home';render();});
+  document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{ const o=b.dataset.open;
+    if(o==='text'){S.view='text';render();} else if(o==='review') startPractice('review'); else {S.showModel=false;S.view='produce';render();} });
+  document.querySelectorAll('[data-seg]').forEach(b=>b.onclick=()=>startSeg(+b.dataset.seg));
+  document.querySelectorAll('[data-term]').forEach(b=>b.onclick=()=>openCard(b.dataset.term,S.view));
+  document.querySelectorAll('[data-line]').forEach(b=>b.onclick=()=>{const l=DATA.lines[+b.dataset.line]; speak(l.text,l.audio,b,l.who);});
+  const pa=$('#playAll'); if(pa) pa.onclick=()=>{ let i=0; const next=()=>{ if(i>=DATA.lines.length) return; const l=DATA.lines[i]; const btn=document.querySelector(`[data-line="${i}"]`); i++; speak(l.text,l.audio,btn,l.who,next); }; next(); };
+  on('#toPart1',()=>{S.saved.read=true;save();startSeg(1);});
+  document.querySelectorAll('[data-gloss]').forEach(b=>b.onclick=()=>{ const id=b.dataset.gloss; S.gloss[id]=!S.gloss[id]; const y=window.scrollY; render(); window.scrollTo(0,y); });
+  document.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>{const c=C(b.dataset.card); speak(c.say,c.audio,b,'Narrator');});
+  on('#prevCard',()=>{ if(S.card===0){S.view='home';} else S.card--; render(); });
+  on('#nextCard',()=>{ if(S.card===SEG(S.seg).ids.length-1) startPractice('seg'); else {S.card++; render();} });
+  on('#backFromCard',()=>{ S.view=S.ret||'home'; render(); });
+  if(S.view==='practice'){
+    const q=qList()[S.q];
+    const ls=document.querySelector('[data-listen]'); if(ls) ls.onclick=()=>{const c=C(q.card); speak(q.listen.text,q.listen.audio,ls,'Narrator');};
+    document.querySelectorAll('[data-opt]').forEach(b=>b.onclick=()=>{ attempt(q,b.dataset.opt===q.answer,b.dataset.opt); render(); });
+    document.querySelectorAll('[data-left]').forEach(b=>b.onclick=()=>{ S.sel=b.dataset.left; const a=S.att[q.id]; if(a) a.last=null; render(); });
+    document.querySelectorAll('[data-right]').forEach(b=>b.onclick=()=>{
+      if(!S.sel) return; const pair=q.pairs.find(p=>p[0]===S.sel), ok=pair[1]===b.dataset.right;
+      const a=S.att[q.id]||{tries:0,done:false,last:null}; a.tries++;
+      if(!ok){ if(S.firstTry[q.id]===undefined) S.firstTry[q.id]=false; (S.firstMiss[q.id]=S.firstMiss[q.id]||[]).push(S.sel); a.last='miss'; }
+      else { (S.matched[q.id]=S.matched[q.id]||{})[S.sel]=b.dataset.right; a.last=null; }
+      if(Object.keys(S.matched[q.id]||{}).length===q.pairs.length){ a.done=true; if(S.firstTry[q.id]===undefined) S.firstTry[q.id]=true; }
+      S.att[q.id]=a; S.sel=null; render(); });
+    const ci=$('#checkInput'); if(ci){ const inp=$('#ans'); const go=()=>{ const v=inp.value.trim(); if(!v){inp.focus();return;} attempt(q,q.accept.some(x=>x.toLowerCase()===v.toLowerCase()),v); render(); }; ci.onclick=go; inp.onkeydown=e=>{if(e.key==='Enter')go();}; }
+    on('#seeCard',()=>openCard(q.card,'practice'));
+    const nq=$('#nextQ'); if(nq) nq.onclick=()=>{ if(nq.disabled) return; if(S.q===qList().length-1) finish(); else {S.q++; S.sel=null; render();} };
+  }
+  on('#redo',()=>startPractice('seg')); on('#redoRev',()=>startPractice('review'));
+  on('#nextSeg',()=>startSeg(S.seg+1)); on('#toReview',()=>startPractice('review'));
+  on('#showModel',()=>{ S.saved.produce=$('#free').value; save(); S.showModel=true; render(); });
+}
+if('speechSynthesis' in window){ speechSynthesis.getVoices(); }
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floca · Word Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+<style>
+/* FLOCA · Word Bank (all 46 words). Data generated from the researcher's content file.
+   AUDIO_BASE: same audio folder as the unit widgets. */
+:root{--sage:#3E7A5C;--sage-d:#2F6A4F;--mint:#E3F3E9;--mint-l:#F2F9F4;--mint-m:#A9D3BA;--rose:#B04A6E;--rose-d:#8E3557;--blush:#FBE3EA;--blush-l:#FDF2F5;--ink:#2B2A33;--muted:#5F5C67;--line:#E7E1E5;--soft:#FAF7F9}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:var(--ink);font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.5}
+.app{max-width:1000px;margin:0 auto;padding:16px 16px 28px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible{outline:3px solid var(--rose);outline-offset:2px}
+.brand{font-family:Poppins,Inter,Arial,sans-serif;font-weight:600;font-size:15px;color:var(--rose);margin-bottom:8px}
+.brand span{color:var(--muted);font-family:Inter,Arial,sans-serif;font-weight:400;font-size:13px}
+h1{font-family:Poppins,Inter,Arial,sans-serif;font-weight:600;font-size:24px;line-height:1.25}
+.lead{color:var(--muted);font-size:15px;margin:4px 0 14px}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);font-size:15px}
+.chip[aria-pressed="true"]{border-color:var(--sage);background:var(--mint);color:var(--sage-d);font-weight:700}
+.mode{display:flex;border:1.5px solid var(--sage);border-radius:12px;overflow:hidden}
+.mode button{min-height:44px;padding:0 16px;font-size:15px;font-weight:600;color:var(--sage-d)}
+.mode button[aria-pressed="true"]{background:var(--sage);color:#fff}
+.hint{font-size:14px;color:var(--muted);margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{border:1.5px solid var(--line);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.term{font-family:Poppins,Inter,Arial,sans-serif;font-weight:600;font-size:20px;line-height:1.25;overflow-wrap:anywhere}
+.play{width:44px;height:44px;flex:none;border-radius:50%;border:1.5px solid var(--sage);color:var(--sage);display:flex;align-items:center;justify-content:center}
+.play.on{background:var(--sage);color:#fff}
+.tag{align-self:flex-start;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px}
+.tag.e{color:var(--rose-d);background:var(--blush)}.tag.w{color:var(--sage-d);background:var(--mint)}
+.meaning{font-size:15px}
+.idm{font-size:14px;color:var(--rose-d);background:var(--blush-l);border-radius:10px;padding:6px 10px}
+.link{align-self:flex-start;min-height:40px;font-size:14px;font-weight:600;color:var(--rose);text-decoration:underline;text-underline-offset:3px}
+.reveal{min-height:48px;border-radius:12px;border:1.5px dashed var(--mint-m);background:var(--mint-l);font-size:15px;font-weight:600;color:var(--sage-d);padding:0 12px}
+.ex{font-size:14px;color:var(--muted);border-left:3px solid var(--sage);padding-left:10px}
+.count{font-size:14px;color:var(--muted);margin-top:14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="brand">Floca <span>· Word Bank</span></div>
+  <h1>All 46 words in one place</h1>
+  <p class="lead">Browse the words, or test yourself before the next lesson.</p>
+  <div class="bar">
+    <div class="chips" role="group" aria-label="Choose a unit" id="units"></div>
+    <div class="mode" role="group" aria-label="Mode">
+      <button type="button" id="mBrowse">Browse</button>
+      <button type="button" id="mTest">Test yourself</button>
+    </div>
+  </div>
+  <p class="hint" id="hint" aria-live="polite"></p>
+  <div class="grid" id="grid"></div>
+  <p class="count" id="count"></p>
+</div>
+<script>
+const AUDIO_BASE = "audio/";
+const WORDS = [{"id": "U1-01", "unit": 1, "type": "expr", "term": "What do you think about …?", "meaning": "A question to ask what someone thinks.", "id_mean": "Bagaimana pendapatmu tentang …?", "example": "What do you think about a \"Bring Your Own Bottle\" day for our class project?", "audio": "FLC-AD-U1-01.mp3", "say": "What do you think about this?"}, {"id": "U1-02", "unit": 1, "type": "expr", "term": "Do you agree with …?", "meaning": "A question to ask if someone has the same opinion.", "id_mean": "Apakah kamu setuju dengan …?", "example": "Do you agree with doing it every Friday?", "audio": "FLC-AD-U1-02.mp3", "say": "Do you agree with this?"}, {"id": "U1-03", "unit": 1, "type": "expr", "term": "I strongly agree with …", "meaning": "You agree very much.", "id_mean": "Saya sangat setuju dengan …", "example": "I strongly agree with it.", "audio": "FLC-AD-U1-03.mp3", "say": "I strongly agree with that."}, {"id": "U1-04", "unit": 1, "type": "expr", "term": "I totally agree.", "meaning": "You agree 100 percent.", "id_mean": "Saya sangat setuju.", "example": "I totally agree. The reason is simple: tumblers are cheap and easy to wash.", "audio": "FLC-AD-U1-04.mp3", "say": "I totally agree."}, {"id": "U1-05", "unit": 1, "type": "expr", "term": "Absolutely.", "meaning": "A short way to say \"Yes, I agree very much.\"", "id_mean": "Tentu saja.", "example": "Absolutely. We have sports on Friday, so everyone needs water.", "audio": "FLC-AD-U1-05.mp3", "say": "Absolutely."}, {"id": "U1-06", "unit": 1, "type": "expr", "term": "I agree with you / your idea", "meaning": "You have the same opinion as the speaker.", "id_mean": "Saya setuju denganmu / dengan idemu", "example": "That's a good point. I agree with your idea.", "audio": "FLC-AD-U1-06.mp3", "say": "I agree with your idea."}, {"id": "U1-07", "unit": 1, "type": "expr", "term": "That's a good point.", "meaning": "You think the other person said something smart.", "id_mean": "Itu pendapat yang bagus.", "example": "That's a good point. I agree with your idea.", "audio": "FLC-AD-U1-07.mp3", "say": "That's a good point."}, {"id": "U1-08", "unit": 1, "type": "expr", "term": "I think so too.", "meaning": "You have the same opinion.", "id_mean": "Saya juga berpikir begitu.", "example": "I think so too. And what about a fine for students who bring plastic bottles?", "audio": "FLC-AD-U1-08.mp3", "say": "I think so too."}, {"id": "U1-09", "unit": 1, "type": "expr", "term": "because … / The reason is …", "meaning": "Words to explain why you have an opinion.", "id_mean": "karena … / Alasannya adalah …", "example": "I totally agree. The reason is simple: tumblers are cheap and easy to wash.", "audio": "FLC-AD-U1-09.mp3", "say": "because... The reason is..."}, {"id": "U1-10", "unit": 1, "type": "expr", "term": "I partly agree / partly disagree with …", "meaning": "You agree with some parts, but not all.", "id_mean": "Saya setuju sebagian / tidak setuju sebagian dengan …", "example": "I partly agree with Dimas. A reward is good, but we also need clear rules.", "audio": "FLC-AD-U1-10.mp3", "say": "I partly agree with that. I partly disagree with that."}, {"id": "U1-11", "unit": 1, "type": "expr", "term": "I agree up to a point, but …", "meaning": "You agree, but only with some parts.", "id_mean": "Saya setuju sampai batas tertentu, tetapi …", "example": "I agree up to a point, but rewards can cost money.", "audio": "FLC-AD-U1-11.mp3", "say": "I agree up to a point, but..."}, {"id": "U1-12", "unit": 1, "type": "expr", "term": "That's true, but …", "meaning": "You accept the idea, then add a different idea.", "id_mean": "Itu benar, tetapi …", "example": "That's true, but we can put a reminder in the class group on Thursday.", "audio": "FLC-AD-U1-12.mp3", "say": "That's true, but..."}, {"id": "U1-13", "unit": 1, "type": "expr", "term": "I see your point, but …", "meaning": "You understand the idea, but you think differently.", "id_mean": "Saya mengerti maksudmu, tetapi …", "example": "I see your point, but a small fine can help people remember.", "audio": "FLC-AD-U1-13.mp3", "say": "I see your point, but..."}, {"id": "U1-14", "unit": 1, "type": "expr", "term": "I'm not sure about that.", "meaning": "You are not ready to agree.", "id_mean": "Saya tidak yakin tentang itu.", "example": "I'm not sure about that. Some students forget their tumblers after sports.", "audio": "FLC-AD-U1-14.mp3", "say": "I'm not sure about that."}, {"id": "U1-15", "unit": 1, "type": "expr", "term": "I'm afraid I disagree.", "meaning": "A polite way to say you do not agree.", "id_mean": "Maaf, saya tidak setuju.", "example": "I'm afraid I disagree. A fine can make students feel bad.", "audio": "FLC-AD-U1-15.mp3", "say": "I'm afraid I disagree."}, {"id": "U1-16", "unit": 1, "type": "expr", "term": "I don't think so.", "meaning": "You do not agree.", "id_mean": "Saya rasa tidak.", "example": "I don't think so. A reward is better, because rewards make students happy.", "audio": "FLC-AD-U1-16.mp3", "say": "I don't think so."}, {"id": "U1-17", "unit": 1, "type": "expr", "term": "I disagree with …", "meaning": "You do not have the same opinion.", "id_mean": "Saya tidak setuju dengan …", "example": "So, no fines. I disagree with fines", "audio": "FLC-AD-U1-17.mp3", "say": "I disagree with that."}, {"id": "U1-18", "unit": 1, "type": "expr", "term": "I strongly disagree with …", "meaning": "You do not agree at all.", "id_mean": "Saya sangat tidak setuju dengan …", "example": "I strongly disagree with laughing at students who forget.", "audio": "FLC-AD-U1-18.mp3", "say": "I strongly disagree with that."}, {"id": "U2-01", "unit": 2, "type": "word", "term": "waste", "meaning": "Things we throw away because we do not need them.", "id_mean": "sampah; limbah", "example": "Separate your waste: organic, plastic, and paper.", "audio": "FLC-AD-U2-01.mp3", "say": "waste"}, {"id": "U2-02", "unit": 2, "type": "word", "term": "single-use plastic", "meaning": "Plastic we use one time and then throw away.", "id_mean": "plastik sekali pakai", "example": "Reduce single-use plastic.", "audio": "FLC-AD-U2-02.mp3", "say": "single-use plastic"}, {"id": "U2-03", "unit": 2, "type": "word", "term": "litter", "meaning": "To throw trash on the ground, not in a bin.", "id_mean": "membuang sampah sembarangan", "example": "Do not litter.", "audio": "FLC-AD-U2-03.mp3", "say": "litter"}, {"id": "U2-04", "unit": 2, "type": "word", "term": "trash bin", "meaning": "A box or can for trash.", "id_mean": "tempat sampah", "example": "Put it in the right trash bin.", "audio": "FLC-AD-U2-04.mp3", "say": "trash bin"}, {"id": "U2-05", "unit": 2, "type": "word", "term": "separate", "meaning": "To put things into different groups.", "id_mean": "memilah; memisahkan", "example": "Separate your waste: organic, plastic, and paper.", "audio": "FLC-AD-U2-05.mp3", "say": "separate"}, {"id": "U2-06", "unit": 2, "type": "word", "term": "compost", "meaning": "Natural fertilizer made from food and leaf waste.", "id_mean": "kompos", "example": "Turn food waste into compost for our plants.", "audio": "FLC-AD-U2-06.mp3", "say": "compost"}, {"id": "U2-07", "unit": 2, "type": "word", "term": "reduce", "meaning": "To make something less.", "id_mean": "mengurangi", "example": "Reduce single-use plastic.", "audio": "FLC-AD-U2-07.mp3", "say": "reduce"}, {"id": "U2-08", "unit": 2, "type": "word", "term": "reuse", "meaning": "To use something again.", "id_mean": "menggunakan ulang", "example": "Reuse paper and bottles.", "audio": "FLC-AD-U2-08.mp3", "say": "reuse"}, {"id": "U2-09", "unit": 2, "type": "word", "term": "recycle", "meaning": "To make old things into new things.", "id_mean": "mendaur ulang", "example": "Recycle cans and plastic.", "audio": "FLC-AD-U2-09.mp3", "say": "recycle"}, {"id": "U2-10", "unit": 2, "type": "word", "term": "zero waste", "meaning": "Making almost no trash.", "id_mean": "nol sampah", "example": "Go green, go zero waste!", "audio": "FLC-AD-U2-10.mp3", "say": "zero waste"}, {"id": "U2-11", "unit": 2, "type": "word", "term": "plant", "meaning": "(verb) To put a seed or tree in the ground. (noun) A living green thing.", "id_mean": "menanam; tanaman", "example": "We should also plant more trees.", "audio": "FLC-AD-U2-11.mp3", "say": "plant"}, {"id": "U2-12", "unit": 2, "type": "word", "term": "environment", "meaning": "The air, water, land, and living things around us.", "id_mean": "lingkungan", "example": "Protect our environment!", "audio": "FLC-AD-U2-12.mp3", "say": "environment"}, {"id": "U2-13", "unit": 2, "type": "word", "term": "save energy", "meaning": "To use less electricity.", "id_mean": "menghemat energi", "example": "Save energy, stop pollution.", "audio": "FLC-AD-U2-13.mp3", "say": "save energy"}, {"id": "U2-14", "unit": 2, "type": "word", "term": "turn off", "meaning": "To stop a machine or light with a switch.", "id_mean": "mematikan", "example": "Turn off the lights and fans.", "audio": "FLC-AD-U2-14.mp3", "say": "turn off"}, {"id": "U2-15", "unit": 2, "type": "word", "term": "pollution", "meaning": "Dirty air, water, or land.", "id_mean": "polusi; pencemaran", "example": "Save energy, stop pollution.", "audio": "FLC-AD-U2-15.mp3", "say": "pollution"}, {"id": "U2-16", "unit": 2, "type": "word", "term": "campaign", "meaning": "Activities to ask many people to do something good.", "id_mean": "kampanye", "example": "Our Adiwiyata campaign starts this Monday.", "audio": "FLC-AD-U2-16.mp3", "say": "campaign"}, {"id": "U2-17", "unit": 2, "type": "word", "term": "slogan", "meaning": "A short sentence that is easy to remember.", "id_mean": "slogan; semboyan", "example": "I strongly agree with the slogan.", "audio": "FLC-AD-U2-17.mp3", "say": "slogan"}, {"id": "U2-18", "unit": 2, "type": "word", "term": "layout", "meaning": "The way words and pictures are arranged on a page.", "id_mean": "tata letak", "example": "I see your point, but the layout is too busy.", "audio": "FLC-AD-U2-18.mp3", "say": "layout"}, {"id": "U3-01", "unit": 3, "type": "word", "term": "bullying", "meaning": "Hurting or scaring another person again and again.", "id_mean": "perundungan", "example": "What do you think about the new anti-bullying campaign?", "audio": "FLC-AD-U3-01.mp3", "say": "bullying"}, {"id": "U3-02", "unit": 3, "type": "word", "term": "bully", "meaning": "To hurt or scare a weaker person again and again.", "id_mean": "merundung", "example": "Some older students still bully the new ones.", "audio": "FLC-AD-U3-02.mp3", "say": "bully"}, {"id": "U3-03", "unit": 3, "type": "word", "term": "safe", "meaning": "Free from danger.", "id_mean": "aman", "example": "Every student must feel safe at school.", "audio": "FLC-AD-U3-03.mp3", "say": "safe"}, {"id": "U3-04", "unit": 3, "type": "word", "term": "report", "meaning": "To tell a teacher or an adult about a problem.", "id_mean": "melaporkan", "example": "That's true, but students can report bullying to the counseling teacher.", "audio": "FLC-AD-U3-04.mp3", "say": "report"}, {"id": "U3-10", "unit": 3, "type": "word", "term": "solution", "meaning": "A way to fix a problem.", "id_mean": "solusi; jalan keluar", "example": "I agree up to a point, but a poster is not a solution.", "audio": "FLC-AD-U3-10.mp3", "say": "solution"}, {"id": "U3-05", "unit": 3, "type": "word", "term": "kind", "meaning": "Nice and caring to other people.", "id_mean": "baik hati", "example": "We also need to be kind.", "audio": "FLC-AD-U3-05.mp3", "say": "kind"}, {"id": "U3-06", "unit": 3, "type": "word", "term": "respect", "meaning": "To treat someone as important.", "id_mean": "menghormati; menghargai", "example": "We should respect different opinions and different friends.", "audio": "FLC-AD-U3-06.mp3", "say": "respect"}, {"id": "U3-07", "unit": 3, "type": "word", "term": "include", "meaning": "To make someone part of a group.", "id_mean": "melibatkan", "example": "Let's include new students in group work.", "audio": "FLC-AD-U3-07.mp3", "say": "include"}, {"id": "U3-08", "unit": 3, "type": "word", "term": "inclusive", "meaning": "Open to everyone.", "id_mean": "inklusif; menerima semua orang", "example": "An inclusive class means everyone feels welcome.", "audio": "FLC-AD-U3-08.mp3", "say": "inclusive"}, {"id": "U3-09", "unit": 3, "type": "word", "term": "initiative", "meaning": "A new plan that you start yourself.", "id_mean": "inisiatif; prakarsa", "example": "So, let's take the initiative.", "audio": "FLC-AD-U3-09.mp3", "say": "initiative"}];
+const S = { unit: 0, mode: 'browse', open: {}, idm: {} };
+try { const s = JSON.parse(localStorage.getItem('floca-wb') || 'null'); if (s) { S.unit = s.unit || 0; S.mode = s.mode || 'browse'; } } catch (e) {}
+const save = () => { try { localStorage.setItem('floca-wb', JSON.stringify({ unit: S.unit, mode: S.mode })); } catch (e) {} };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const SPK = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/><path d="M15 9a4 4 0 0 1 0 6M17.5 6.5a7.5 7.5 0 0 1 0 11" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>';
+let cur = null;
+function stop() { if (cur && cur.pause) cur.pause(); if (window.speechSynthesis) speechSynthesis.cancel(); cur = null; document.querySelectorAll('.play.on').forEach(b => b.classList.remove('on')); }
+function tts(t, done) { if (!('speechSynthesis' in window)) { done(); return; } const u = new SpeechSynthesisUtterance(String(t).replace(/…|\.\.\./g, ',')); u.lang = 'en-US'; u.rate = 0.9; const v = speechSynthesis.getVoices().find(x => /^en(-|_)(US|GB)/i.test(x.lang)); if (v) u.voice = v; u.onend = done; u.onerror = done; speechSynthesis.speak(u); }
+function speak(w, btn) {
+  stop(); btn.classList.add('on'); let ended = false; const done = () => { if (ended) return; ended = true; btn.classList.remove('on'); };
+  if (AUDIO_BASE) { let fb = false; const fallback = () => { if (fb) return; fb = true; tts(w.say, done); }; const a = new Audio(AUDIO_BASE + w.audio); cur = a; a.onended = done; a.onerror = fallback; a.play().catch(fallback); return; }
+  tts(w.say, done);
+}
+function render() {
+  const list = WORDS.filter(w => !S.unit || w.unit === S.unit);
+  document.getElementById('units').innerHTML = [['All 46', 0], ['Unit 1', 1], ['Unit 2', 2], ['Unit 3', 3]].map(([l, u]) => `<button type="button" class="chip" data-unit="${u}" aria-pressed="${S.unit === u}">${l}</button>`).join('');
+  document.getElementById('mBrowse').setAttribute('aria-pressed', S.mode === 'browse');
+  document.getElementById('mTest').setAttribute('aria-pressed', S.mode === 'test');
+  document.getElementById('hint').textContent = S.mode === 'test' ? 'Test yourself: say the meaning in your head first. Then tap the card to check.' : 'Browse: press the speaker to hear a word. Tap "Show Indonesian meaning" if you need it.';
+  document.getElementById('grid').innerHTML = list.map(w => {
+    const shown = S.mode === 'browse' || S.open[w.id];
+    const body = shown
+      ? `<p class="meaning">${esc(w.meaning)}</p>` +
+        (S.mode === 'test' || S.idm[w.id] ? `<p class="idm" lang="id">${esc(w.id_mean)}</p>` : '') +
+        (S.mode === 'browse' ? `<button type="button" class="link" data-idm="${w.id}" aria-expanded="${!!S.idm[w.id]}">${S.idm[w.id] ? 'Hide' : 'Show'} Indonesian meaning</button>` : '') +
+        `<p class="ex" lang="en">${esc(w.example)}</p>`
+      : `<button type="button" class="reveal" data-open="${w.id}">Tap to check the meaning</button>`;
+    return `<article class="card" aria-label="${esc(w.term)}"><div class="top"><span class="term" lang="en">${esc(w.term)}</span><button type="button" class="play" data-play="${w.id}" aria-label="Listen: ${esc(w.term)}">${SPK}</button></div><span class="tag ${w.type === 'expr' ? 'e' : 'w'}">Unit ${w.unit} · ${w.type === 'expr' ? 'Expression' : 'Theme word'}</span>${body}</article>`;
+  }).join('');
+  const done = list.filter(w => S.open[w.id]).length;
+  document.getElementById('count').textContent = S.mode === 'test' ? `Checked ${done} of ${list.length} words.` : `${list.length} words.`;
+  bind();
+}
+function bind() {
+  document.querySelectorAll('[data-unit]').forEach(b => b.onclick = () => { S.unit = +b.dataset.unit; save(); render(); });
+  document.querySelectorAll('[data-play]').forEach(b => b.onclick = () => speak(WORDS.find(w => w.id === b.dataset.play), b));
+  document.querySelectorAll('[data-open]').forEach(b => b.onclick = () => { S.open[b.dataset.open] = true; render(); });
+  document.querySelectorAll('[data-idm]').forEach(b => b.onclick = () => { S.idm[b.dataset.idm] = !S.idm[b.dataset.idm]; render(); });
+}
+document.getElementById('mBrowse').onclick = () => { S.mode = 'browse'; save(); render(); };
+document.getElementById('mTest').onclick = () => { S.mode = 'test'; S.open = {}; save(); render(); };
+if ('speechSynthesis' in window) speechSynthesis.getVoices();
+render();
+</script>
+</body>
+</html>
